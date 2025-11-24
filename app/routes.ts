@@ -5,4 +5,5 @@ export default [
     route('dashboard','routes/dashboard.tsx'),
     route('productos','routes/productos.tsx'),
     route('ordenes','routes/ordenes.tsx'),
+    route('detalle-producto/:id', 'routes/detalle-producto.tsx')
 ] satisfies RouteConfig;

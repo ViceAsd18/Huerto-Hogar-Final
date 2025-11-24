@@ -5,6 +5,7 @@ export interface Producto {
     stock: number;
     precio: number;
     imagen: string;
+    descripcion? : string;
 }
 
 // También puedes exportar datos mock iniciales
@@ -15,7 +16,8 @@ export const productosMock: Producto[] = [
         categoria: "Electrónica",
         stock: 85,
         precio: 799.00,
-        imagen: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150"
+        imagen: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=150",
+        descripcion : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa accusantium distinctio quo eligendi voluptatem, dolorem quasi at possimus repellendus natus praesentium sequi libero aliquid numquam. Natus saepe quidem quo explicabo, maxime doloribus! Possimus distinctio perferendis adipisci quos, dolor, eos, ducimus obcaecati placeat laboriosam nihil excepturi! Atque quod unde eaque est?'
     },
 
     {
@@ -24,7 +26,9 @@ export const productosMock: Producto[] = [
         categoria: "Mobiliario",
         stock: 45,
         precio: 250.00,
-        imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150&h=150&fit=crop"
+        imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150&h=150&fit=crop",
+        descripcion : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa accusantium distinctio quo eligendi voluptatem, dolorem quasi at possimus repellendus natus praesentium sequi libero aliquid numquam. Natus saepe quidem quo explicabo, maxime doloribus! Possimus distinctio perferendis adipisci quos, dolor, eos, ducimus obcaecati placeat laboriosam nihil excepturi! Atque quod unde eaque est?'
+        
     },
 
     {
@@ -33,7 +37,8 @@ export const productosMock: Producto[] = [
         categoria: "Accesorios",
         stock: 200,
         precio: 150.00,
-        imagen: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=150&h=150&fit=crop"
+        imagen: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=150&h=150&fit=crop",
+        descripcion : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa accusantium distinctio quo eligendi voluptatem, dolorem quasi at possimus repellendus natus praesentium sequi libero aliquid numquam. Natus saepe quidem quo explicabo, maxime doloribus! Possimus distinctio perferendis adipisci quos, dolor, eos, ducimus obcaecati placeat laboriosam nihil excepturi! Atque quod unde eaque est?'
     },
 
     {
@@ -42,7 +47,8 @@ export const productosMock: Producto[] = [
         categoria: "Electrónica",
         stock: 60,
         precio: 550.00,
-        imagen: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=150&h=150&fit=crop"
+        imagen: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=150&h=150&fit=crop",
+        descripcion : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa accusantium distinctio quo eligendi voluptatem, dolorem quasi at possimus repellendus natus praesentium sequi libero aliquid numquam. Natus saepe quidem quo explicabo, maxime doloribus! Possimus distinctio perferendis adipisci quos, dolor, eos, ducimus obcaecati placeat laboriosam nihil excepturi! Atque quod unde eaque est?'
     },
     
     

@@ -7,9 +7,9 @@ interface Props {
 const BadgeStock = ({ stock } : Props) => {
     
     const getColor = (cantidad : number) => {
-        if (cantidad > 100) return "green";
-        if (cantidad > 50) return "blue";
-        if (cantidad > 20) return "orange";
+        if (cantidad > 50) return "green";
+        if (cantidad > 25) return "blue";
+        if (cantidad > 5) return "orange";
         return "red";
     }
 

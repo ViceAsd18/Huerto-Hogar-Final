@@ -5,6 +5,7 @@ import type { Producto } from "modelo/productoModel"
 import { productosMock } from "modelo/productoModel"
 import TablaProductos from "componentes/organismo/TablaProducto"
 import BarraFiltros from "../../componentes/moleculas/BarraFiltros"
+import { useNavigate } from "react-router"
 
 const { Title } = Typography;
 
@@ -14,9 +15,12 @@ const ProductosPage = () => {
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState<string>();
     const [disponibilidadSeleccionada, setDisponibilidadSeleccionada] = useState<string>();
 
+    const navigate = useNavigate();
+
+
     const handleVerDetalle = (producto: Producto) => {
-        message.info(`Viendo detalle de: ${producto.nombre}`);
-        //Agregar logica mas adelante para ir al detalle producto
+        navigate(`/detalle-producto/${producto.id}`);
+
     };
 
     // Filtrar productos
