@@ -1,5 +1,5 @@
 import { Row, Col } from "antd";
-import CardProducto from "./CatalogoProductos";
+import CardProducto from "../moleculas/CardProductos";
 import type { Producto } from "modelo/productoModel";
 
 const CatalogoProductos = ({ productos, onVerDetalle }: { productos: Producto[]; onVerDetalle: (p: Producto) => void }) => {

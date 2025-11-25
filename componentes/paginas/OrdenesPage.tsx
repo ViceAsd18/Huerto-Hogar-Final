@@ -1,6 +1,4 @@
 import VendedorLayout from "componentes/layout/VendedorLayout"
-import { useParams } from "react-router";
-import { productosMock } from "modelo/productoModel";
 
 
 const OrdenesPage = () => {

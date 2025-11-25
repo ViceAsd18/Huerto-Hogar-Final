@@ -53,7 +53,7 @@ const CardProducto = ({ producto, onVerDetalle }: Props) => {
             </Col>
         </Row>
 
-        <div style={{ marginTop: 16, textAlign: "center" }}>
+        <div style={{ marginTop: 16, textAlign: "center" }}>    
             <Button
                 type="primary"
                 style={{ width: "100%", maxWidth: 200 }}

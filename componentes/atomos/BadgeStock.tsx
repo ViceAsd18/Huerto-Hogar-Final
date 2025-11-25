@@ -8,8 +8,8 @@ const BadgeStock = ({ stock } : Props) => {
     
     const getColor = (cantidad : number) => {
         if (cantidad > 50) return "green";
-        if (cantidad > 25) return "blue";
-        if (cantidad > 5) return "orange";
+        if (cantidad > 25) return "orange";
+        if (cantidad > 5) return "red";
         return "red";
     }
 
