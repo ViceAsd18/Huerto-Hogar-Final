@@ -1,13 +1,12 @@
-import { Tag } from "antd"
+import { Tag } from "antd";
 
 interface Props {
-    categoria : string
+    categoria: string;
+    color?: string;
 }
 
-const CategoriaProducto = ({categoria} : Props) => {
-    return (
-        <Tag color='blue'>{categoria}</Tag>
-    )
-}
+const CategoriaProducto = ({ categoria, color = "blue" }: Props) => {
+    return <Tag color={color}>{categoria}</Tag>;
+};
 
-export default CategoriaProducto
+export default CategoriaProducto;

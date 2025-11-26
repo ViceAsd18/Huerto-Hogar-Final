@@ -1,11 +1,12 @@
 import VendedorLayout from "componentes/layout/VendedorLayout"
-import { Card, Space, Typography, message } from "antd"
+import { Card, Space, Typography } from "antd"
 import { useState } from "react"
 import type { Producto } from "modelo/productoModel"
 import { productosMock } from "modelo/productoModel"
-import TablaProductos from "componentes/organismo/TablaProducto"
 import BarraFiltros from "../../componentes/moleculas/BarraFiltros"
 import { useNavigate } from "react-router"
+import CatalogoProductos from "componentes/organismo/CatalogoProductos"
+import Titulo from "componentes/atomos/Titulo"
 
 const { Title } = Typography;
 
@@ -30,15 +31,18 @@ const ProductosPage = () => {
         
         let coincideDisponibilidad = true;
         if (disponibilidadSeleccionada === "En stock") {
-            coincideDisponibilidad = producto.stock > 50;
+            coincideDisponibilidad = producto.stock > 0;
         } else if (disponibilidadSeleccionada === "Stock Bajo") {
             coincideDisponibilidad = producto.stock > 0 && producto.stock <= 50;
         } else if (disponibilidadSeleccionada === "Sin Stock") {
             coincideDisponibilidad = producto.stock === 0;
         }
 
+
         return coincideBusqueda && coincideCategoria && coincideDisponibilidad;
     });
+
+
 
     return (
         <VendedorLayout>
@@ -48,18 +52,16 @@ const ProductosPage = () => {
                         Gestión de Productos
                     </Title>
                     
-                    {/* Barra de Filtros */}
                     <BarraFiltros
                         busqueda={busqueda}
                         onBusquedaChange={setBusqueda}
-                        categoriaSeleccionada={categoriaSeleccionada}
+                        categoria={categoriaSeleccionada}
                         onCategoriaChange={setCategoriaSeleccionada}
-                        disponibilidadSeleccionada={disponibilidadSeleccionada}
+                        disponibilidad={disponibilidadSeleccionada}
                         onDisponibilidadChange={setDisponibilidadSeleccionada}
                     />
 
-                    {/* Tabla de Productos */}
-                    <TablaProductos
+                    <CatalogoProductos
                         productos={productosFiltrados}
                         onVerDetalle={handleVerDetalle}
                     />

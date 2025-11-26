@@ -1,82 +1,62 @@
 import { Button, Space, Select } from "antd";
 import { ClearOutlined } from "@ant-design/icons";
-import BuscadorProductos from "componentes/atomos/BuscadorProducto";
-
-const { Option } = Select;
+import Buscador from "componentes/atomos/Buscador";
 
 interface Props {
     busqueda: string;
     onBusquedaChange: (valor: string) => void;
-    categoriaSeleccionada?: string;
+    categoria: string | undefined;
     onCategoriaChange?: (categoria: string) => void;
-    disponibilidadSeleccionada?: string;
-    onDisponibilidadChange?: (disponibilidad: string) => void;
+    disponibilidad: string | undefined;
+    onDisponibilidadChange?: (estado: string) => void;
 }
 
-const BarraFiltros: React.FC<Props> = ({
-    busqueda, 
-    onBusquedaChange, 
-    categoriaSeleccionada, 
-    onCategoriaChange, 
-    disponibilidadSeleccionada, 
-    onDisponibilidadChange 
-}) => {
+const BarraFiltros = ({ busqueda, onBusquedaChange, categoria, onCategoriaChange, disponibilidad, onDisponibilidadChange}: Props) => {
 
     const categorias = ['Electrónica', 'Ropa', 'Hogar', 'Juguetes'];
-    const disponibilidades = ["En stock", "Stock Bajo", "Sin Stock", 'Todos'];
+    const disponibilidades = ["En stock", "Stock Bajo", "Sin Stock", "Todos"];
 
-    const handleLimpiarFiltros = () => {
+    const limpiarFiltros = () => {
         onBusquedaChange("");
         onCategoriaChange?.("");
         onDisponibilidadChange?.("");
     };
 
     return (
-        <Space wrap size='middle' style={{ width: '100%', marginBottom: 16 }}>
-            <BuscadorProductos
+        <Space wrap size="middle" style={{ width: "100%", marginBottom: 16 }}>
+            <Buscador
                 value={busqueda}
                 onChange={onBusquedaChange}
-                placeholder="Buscar Producto..."
-                ancho={250}
+                placeholder="Buscar producto..."
+                width={200}
             />
 
             <Select
-                placeholder='Categoría'
-                value={categoriaSeleccionada}
+                placeholder="Categoría"
+                value={categoria}
                 onChange={onCategoriaChange}
                 style={{ width: 150 }}
                 allowClear
-            >
-                {categorias.map((categoria) => (
-                    <Option key={categoria} value={categoria}>
-                        {categoria}
-                    </Option>
-                ))}
-            </Select>
+                options={categorias.map(c => ({ value: c, label: c }))}
+            />
 
             <Select
                 placeholder="Disponibilidad"
-                value={disponibilidadSeleccionada}
+                value={disponibilidad}
                 onChange={onDisponibilidadChange}
                 style={{ width: 150 }}
                 allowClear
-            >
-                {disponibilidades.map(disponibilidad => (
-                    <Option key={disponibilidad} value={disponibilidad === "Todos" ? "" : disponibilidad}>
-                        {disponibilidad}
-                    </Option>
-                ))}
-            </Select>
+                options={disponibilidades.map(d => ({
+                    value: d === "Todos" ? "" : d,
+                    label: d
+                }))}
+            />
 
-            <Button
-                icon={<ClearOutlined />}
-                onClick={handleLimpiarFiltros}
-                type="default"
-            >
+            <Button icon={<ClearOutlined />} onClick={limpiarFiltros}>
                 Limpiar
             </Button>
         </Space>
-    )
-}
+    );
+};
 
-export default BarraFiltros
+export default BarraFiltros;

@@ -1,20 +1,25 @@
 import { Image } from "antd";
 
 interface Props {
-    src : string;
-    alt? : string;
+    src: string;
+    alt?: string;
+    width?: number | string;
+    height?: number | string;
+    style?: React.CSSProperties;
 }
 
-const ImagenProducto = ({ src, alt = "Imagen del producto"} : Props) => {
+const Imagen = ({ src, alt = "Imagen", width = "100%", height = "100%", style }: Props) => {
     return (
         <Image
             src={src}
             alt={alt}
-            style={{ width: "100%", height: "100%", borderRadius: 8, objectFit: "cover" }}
+            width={width}
+            height={height}
+            style={{ borderRadius: 8, objectFit: "cover", ...style }}
             preview={false}
             fallback="https://via.placeholder.com/150?text=Sin+Imagen"
         />
-    )
-}
-    
-export default ImagenProducto;
+    );
+};
+
+export default Imagen;

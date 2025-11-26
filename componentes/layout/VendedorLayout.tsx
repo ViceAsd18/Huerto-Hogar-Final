@@ -1,8 +1,8 @@
 import { Layout, Drawer, Button } from "antd";
 import { useState, useEffect } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import MenuVendedor from "componentes/moleculas/MenuVendedor";
-import UsuarioSidebar from "componentes/moleculas/UsuarioSidebar";
+import MenuVendedor from "componentes/moleculas/BarraNavegacion/MenuVendedor";
+import UsuarioSidebar from "componentes/moleculas/BarraNavegacion/UsuarioSidebar";
 
 const { Header, Content, Footer, Sider } = Layout;
 const ANCHO_COMPLETO = 250;
