@@ -51,7 +51,7 @@ const ProductosPage = () => {
                         opcionesFiltro={opcionesCategoria}
                         placeholderBusqueda="Buscar producto..."
                         textoBoton="Agregar Producto"
-                        onBotonClick={() => navigate("/crear-producto")}
+                        onBotonClick={() => navigate("/agregar-producto")}
                     />
 
                     <CatalogoProductos

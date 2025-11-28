@@ -1,8 +1,12 @@
 import { LogoutOutlined } from "@ant-design/icons"
 import { Avatar, Dropdown, type MenuProps } from "antd"
+import { useNavigate } from "react-router"
+
 
 const UsuarioSidebar = ({ colapsado }: { colapsado?: boolean }) => {
     
+    const navigate = useNavigate();
+
     const contenedorStyle: React.CSSProperties = {
         padding: colapsado ? '24px 8px' : '24px 16px',
         textAlign: 'center',
@@ -44,7 +48,7 @@ const UsuarioSidebar = ({ colapsado }: { colapsado?: boolean }) => {
             label: 'Cerrar sesión',
             icon: <LogoutOutlined />,
             onClick: () => {
-                console.log("Cerrando sesión..."); //Agregar logica para cerrar sesión mas adelante
+                navigate("/login");
             }
         }
     ]
