@@ -22,7 +22,7 @@ const OrdenesPage = () => {
     const [ordenSeleccionada, setOrdenSeleccionada] = useState<Orden | null>(null);
 
     const handleNuevaOrden = () => {
-        message.info("Función para generar nueva orden")
+        navigate('/crear-orden');
     };
 
     const handleVerDetalle = (orden: Orden) => {

@@ -7,9 +7,11 @@ interface Props {
     loading?: boolean;
 }
 
-const navigate = useNavigate();
 
 const LoginForm = ({ onLogin, loading = false }: Props) => {
+
+    const navigate = useNavigate();
+
     const [form] = Form.useForm();
 
     const colors = {

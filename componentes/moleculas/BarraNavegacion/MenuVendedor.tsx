@@ -12,7 +12,7 @@ const MenuVendedor = () => {
       onClick={({ key }) => navigate(key)}
       items={[
         {
-          key: "/",
+          key: "/dashboard",
           icon: <DashboardOutlined />,
           label: "Dashboard",
         },

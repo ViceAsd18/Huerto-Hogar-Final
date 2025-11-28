@@ -1,14 +1,24 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
-    index("routes/home.tsx"),
-    route('dashboard','routes/dashboardV.tsx'),
-    route('productos','routes/productosV.tsx'),
-    route('ordenes','routes/ordenesV.tsx'),
-    route('detalle-producto/:id', 'routes/detalle-productoV.tsx'),
-    route('crear-orden', 'routes/crear-orden.tsx'),
-    route('orden/:id', 'routes/detalle-ordenV.tsx'),
-    route('agregar-producto', 'routes/agregar-producto.tsx'),
+    //Ruta inicial
+    index("routes/cliente/home_cliente.tsx"),
+
+    //Ruta Publica
     route('login', 'routes/login.tsx'),
-    route('registro','routes/registro.tsx')
+    route('registro','routes/registro.tsx'),
+
+
+    //Rutas Vendedor
+    route('dashboard','routes/vendedor/dashboard.tsx'),
+    route('productos','routes/vendedor/productos.tsx'),
+    route('ordenes','routes/vendedor/ordenes.tsx'),
+    route('agregar-producto', 'routes/vendedor/agregar-producto.tsx'),
+    route('detalle-producto/:id', 'routes/vendedor/detalle-productoV.tsx'),
+    route('crear-orden', 'routes/vendedor/crear-orden.tsx'),
+    route('orden/:id', 'routes/vendedor/detalle-orden.tsx'),
+
+    
+
+
 ] satisfies RouteConfig;
