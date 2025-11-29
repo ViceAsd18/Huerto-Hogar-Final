@@ -1,8 +1,11 @@
 import AgregarProductoPage from "componentes/paginas/Vendedor/productos/AgregarProductoPage"
+import { PrivateRoute } from "auth/PrivateRoute"
 
 const agregar_producto = () => {
     return (
-        <AgregarProductoPage/>
+        <PrivateRoute rol="empleado">
+            <AgregarProductoPage/>
+        </PrivateRoute>
     )
 }
 

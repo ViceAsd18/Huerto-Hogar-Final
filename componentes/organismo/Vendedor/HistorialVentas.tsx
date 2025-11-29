@@ -1,4 +1,3 @@
-// src/componentes/organismo/HistorialVentas.tsx
 import { Card, Table } from "antd";
 import Titulo from "componentes/atomos/Titulo";
 

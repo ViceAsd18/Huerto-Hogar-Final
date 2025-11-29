@@ -1,4 +1,3 @@
-// src/componentes/organismo/InfoProducto.tsx
 import React from "react";
 import type { Producto } from "modelo/productoModel";
 import ImagenProducto from "componentes/atomos/ImagenProducto";

@@ -1,4 +1,3 @@
-// src/componentes/moleculas/CardInfoProducto.tsx
 import React from "react";
 import { Card, Typography, Space, Divider, Tag } from "antd";
 import type { Producto } from "modelo/productoModel";

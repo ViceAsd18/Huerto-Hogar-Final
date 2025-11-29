@@ -1,8 +1,11 @@
+import { PrivateRoute } from "auth/PrivateRoute"
 import OrdenesPage from "componentes/paginas/Vendedor/ordenes/OrdenesPage"
 
 const orden = () => {
     return (
-        <OrdenesPage />
+        <PrivateRoute rol="empleado">
+            <OrdenesPage />
+        </PrivateRoute>
     )
 }
 

@@ -3,7 +3,7 @@ import Titulo from "componentes/atomos/Titulo";
 import { useNavigate } from "react-router";
 
 interface Props {
-    onRegister?: (data: any) => void; // opcional si backend no está listo
+    onRegister?: (data: any) => void;
     loading?: boolean;
 }
 
