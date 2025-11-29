@@ -1,9 +1,9 @@
 import VendedorLayout from "componentes/layout/VendedorLayout"
 import { productosMock } from "modelo/productoModel";
 import { useParams } from "react-router";
-import InfoProducto from "componentes/organismo/InfoProducto";
-import HistorialVentas from "componentes/organismo/HistorialVentas";
-import type { Venta } from "componentes/organismo/HistorialVentas";
+import InfoProducto from "componentes/organismo/Vendedor/InfoProducto";
+import HistorialVentas from "componentes/organismo/Vendedor/HistorialVentas";
+import type { Venta } from "componentes/organismo/Vendedor/HistorialVentas";
 
 const historialVentas: Venta[] = [
     { key: '1', idOrden: 'ORD-2024-03A8', fecha: '12 de Julio, 2024', cantidad: 2, precioTotal: '$2,599.98' },

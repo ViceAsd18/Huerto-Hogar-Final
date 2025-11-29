@@ -1,4 +1,4 @@
-import CrearOrdenPage from "componentes/paginas/ordenes/CrearOrdenPage"
+import CrearOrdenPage from "componentes/paginas/Vendedor/ordenes/CrearOrdenPage"
 
 const crear_orden = () => {
     return (

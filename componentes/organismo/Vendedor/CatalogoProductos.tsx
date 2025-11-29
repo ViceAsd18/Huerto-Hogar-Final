@@ -1,4 +1,4 @@
-import CardProducto from "../moleculas/CardProductos";
+import CardProducto from "componentes/moleculas/Vendedor/CardProductos";
 import type { Producto } from "modelo/productoModel";
 
 const CatalogoProductos = ({productos, onVerDetalle,}: {productos: Producto[]; onVerDetalle: (p: Producto) => void;}) => {

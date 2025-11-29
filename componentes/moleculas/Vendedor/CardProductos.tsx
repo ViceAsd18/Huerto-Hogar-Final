@@ -2,7 +2,7 @@ import { Card, Row, Col, Button } from "antd";
 import type { Producto } from "modelo/productoModel";
 import Imagen from "componentes/atomos/ImagenProducto";
 import BadgeStock from "componentes/atomos/BadgeStock";
-import CategoriaProducto from "componentes/atomos/CategoriaProducto";
+import BadgeCategoria from "componentes/atomos/BadgeCategoria";
 
 interface Props {
     producto: Producto;
@@ -76,7 +76,7 @@ const CardProducto = ({ producto, onVerDetalle }: Props) => {
                     </Col>
 
                     <Col span={12}>
-                        <CategoriaProducto categoria={producto.categoria}></CategoriaProducto>
+                        <BadgeCategoria categoria={producto.categoria}></BadgeCategoria>
                     </Col>
 
                     <Col span={12} style={precioStyle}>

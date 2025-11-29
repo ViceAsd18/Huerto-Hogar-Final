@@ -7,8 +7,8 @@ import { useNavigate } from "react-router";
 
 
 import Titulo from "componentes/atomos/Titulo";
-import TablaOrdenes from "componentes/organismo/TablaOrdenes";
-import ModalPago from "componentes/moleculas/ModalPago";
+import TablaOrdenes from "componentes/organismo/Vendedor/TablaOrdenes";
+import ModalPago from "componentes/moleculas/Vendedor/ModalPago";
 
 const OrdenesPage = () => {
 

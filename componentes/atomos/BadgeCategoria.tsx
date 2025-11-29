@@ -5,8 +5,8 @@ interface Props {
     color?: string;
 }
 
-const CategoriaProducto = ({ categoria, color = "blue" }: Props) => {
+const BadgeCategoria = ({ categoria, color = "blue" }: Props) => {
     return <Tag color={color}>{categoria}</Tag>;
 };
 
-export default CategoriaProducto;
+export default BadgeCategoria;

@@ -2,7 +2,7 @@
 import React from "react";
 import type { Producto } from "modelo/productoModel";
 import ImagenProducto from "componentes/atomos/ImagenProducto";
-import CardInfoProducto from "componentes/moleculas/CardInfoProducto";
+import CardInfoProducto from "componentes/moleculas/Vendedor/CardInfoProducto";
 
 interface InfoProductoProps {
     producto: Producto;

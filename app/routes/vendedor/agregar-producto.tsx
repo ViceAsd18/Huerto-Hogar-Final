@@ -1,4 +1,4 @@
-import AgregarProductoPage from "componentes/paginas/productos/AgregarProductoPage"
+import AgregarProductoPage from "componentes/paginas/Vendedor/productos/AgregarProductoPage"
 
 const agregar_producto = () => {
     return (

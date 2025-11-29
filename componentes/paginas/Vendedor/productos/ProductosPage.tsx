@@ -4,9 +4,9 @@ import { useState } from "react"
 import type { Producto } from "modelo/productoModel"
 import { productosMock } from "modelo/productoModel"
 import { useNavigate } from "react-router"
-import CatalogoProductos from "componentes/organismo/CatalogoProductos"
+import CatalogoProductos from "componentes/organismo/Vendedor/CatalogoProductos"
 import Titulo from "componentes/atomos/Titulo"
-import ControlsTabla from "componentes/moleculas/ControlsTabla"
+import ControlsTabla from "componentes/moleculas/Vendedor/ControlsTabla"
 
 
 const ProductosPage = () => {

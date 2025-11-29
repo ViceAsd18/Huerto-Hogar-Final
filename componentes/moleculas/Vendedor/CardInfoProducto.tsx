@@ -3,7 +3,7 @@ import React from "react";
 import { Card, Typography, Space, Divider, Tag } from "antd";
 import type { Producto } from "modelo/productoModel";
 import BadgeStock from "componentes/atomos/BadgeStock";
-import CategoriaProducto from "componentes/atomos/CategoriaProducto";
+import BadgeCategoria from "componentes/atomos/BadgeCategoria";
 import Titulo from "componentes/atomos/Titulo";
 
 const { Title, Text } = Typography;
@@ -52,7 +52,7 @@ const CardInfoProducto: React.FC<CardInfoProductoProps> = ({ producto }) => {
                             {producto.nombre}
                         </Titulo>
                         <div style={{ marginTop : 10}}>
-                            <CategoriaProducto categoria={producto.categoria}/>
+                            <BadgeCategoria categoria={producto.categoria}/>
                         </div>
                     </div>
 

@@ -1,7 +1,7 @@
 import { Table, Button, Space, Tag } from "antd";
 import type { Dispatch, SetStateAction } from "react";
 import type { Orden } from "modelo/Orden";
-import ControlsTabla from "componentes/moleculas/ControlsTabla";
+import ControlsTabla from "componentes/moleculas/Vendedor/ControlsTabla";
 
 interface Props {
     ordenes: Orden[];

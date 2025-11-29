@@ -1,0 +1,74 @@
+import { InputNumber } from "antd";
+import Boton from "componentes/atomos/Boton";
+import Imagen from "componentes/atomos/ImagenProducto";
+import type { Producto } from "modelo/productoModel";
+
+type Props = {
+    producto: Producto & { cantidad: number };
+    onCantidadChange: (id: number, cantidad: number) => void;
+    onEliminar: (id: number) => void;
+};
+
+const filaStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    padding: "12px 16px",
+    borderRadius: 8,
+    border: "1px solid #e0e0e0",
+    background: "#fafafa",
+    marginBottom: 8,
+};
+
+const infoStyle: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+    flex: 1,
+};
+
+const precioStyle: React.CSSProperties = {
+    width: 100,
+    textAlign: "right",
+    fontWeight: 600,
+    marginRight : 10
+};
+
+const OrdenItem = ({ producto, onCantidadChange, onEliminar }: Props) => {
+    return (
+        <div style={filaStyle}>
+            <div style={infoStyle}>
+                    <Imagen
+                        src={producto.imagen}
+                        alt={producto.nombre}
+                        width={50}
+                        height={50}
+                        style={{
+                            borderRadius: 6,
+                            objectFit: "cover",
+                            border: "1px solid #ddd",
+                        }}
+                    />
+                
+                <span>{producto.nombre}</span>
+            </div>
+
+            <InputNumber
+                min={1}
+                value={producto.cantidad}
+                onChange={(v) => onCantidadChange(producto.id, v ?? 1)}
+            />
+
+            <span style={precioStyle}>
+                ${(producto.precio * producto.cantidad).toFixed(2)}
+            </span>
+
+            <Boton onClick={() => onEliminar(producto.id)} color="#ff4d4f">
+                Eliminar
+            </Boton>
+        </div>
+    );
+};
+
+export default OrdenItem;

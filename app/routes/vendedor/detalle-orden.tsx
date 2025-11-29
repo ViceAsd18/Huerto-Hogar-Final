@@ -1,4 +1,4 @@
-import DetalleOrdenPage from "componentes/paginas/ordenes/DetalleOrdenPage"
+import DetalleOrdenPage from "componentes/paginas/Vendedor/ordenes/DetalleOrdenPage"
 
 const detalle_ordenV = () => {
     return (
