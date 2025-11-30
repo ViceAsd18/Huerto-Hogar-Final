@@ -3,13 +3,11 @@ import Titulo from "componentes/atomos/Titulo";
 import { useNavigate } from "react-router";
 
 interface Props {
-    onRegister?: (data: any) => void;
+    onSubmit: (nombre: string, email: string, password: string) => void;
     loading?: boolean;
 }
 
-const { Option } = Select;
-
-const RegisterForm = ({ onRegister, loading = false }: Props) => {
+const RegisterForm = ({ onSubmit, loading = false }: Props) => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
 
@@ -52,17 +50,15 @@ const RegisterForm = ({ onRegister, loading = false }: Props) => {
         footer: { marginTop: 20, textAlign: "center", fontSize: 14, color: colors.textSecondary }
     };
 
-    const handleSubmit = (values: any) => {
-        const dataToSend = {
-            ...values,
-            rol: "cliente",
-        };
-        console.log("Registro:", dataToSend);
-        if (onRegister) onRegister(dataToSend);
-        message.success("Registro exitoso. Por favor, inicia sesión.");
+
+
+
+    const handleSubmit = async (values: any) => {
+        onSubmit(values.nombre, values.email, values.password);
         form.resetFields();
-        navigate("/login");
     };
+
+
 
     return (
         <div style={styles.pageContainer}>
