@@ -53,9 +53,7 @@ const ProductosPage = () => {
     };
 
     const productosFiltrados = productos.filter(producto => {
-        const coincideBusqueda = producto.nombre_producto
-            .toLowerCase()
-            .includes(busqueda.toLowerCase());
+        const coincideBusqueda = producto.nombre_producto?.toLowerCase().includes(busqueda.toLowerCase());
 
         const coincideCategoria =
             !categoriaSeleccionada || producto.categoria.nombre_categoria === categoriaSeleccionada;
