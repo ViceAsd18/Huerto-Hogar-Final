@@ -29,7 +29,7 @@ export const PrivateRoute = ({ children, rol }: Props) => {
     }
 
     if (!user) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/" replace />; 
     }
 
     if (rol && user.rol.toLowerCase() !== rol.toLowerCase()) {

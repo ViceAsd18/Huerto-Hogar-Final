@@ -1,6 +1,6 @@
 import { api } from "auth/api";
 
-export interface Usuario {
+export interface User {
     id_usuario: number;
     nombre: string;
     email: string;
@@ -10,5 +10,5 @@ export interface Usuario {
 
 export const getClientes = async () => {
     const res = await api.get("/usuarios");
-    return res.data.filter((u: any) => u.rol === "cliente");
+    return res.data.filter((u: any) => u.rol === "cliente");    
 };  

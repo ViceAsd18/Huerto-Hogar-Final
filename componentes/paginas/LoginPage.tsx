@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useAuth } from "auth/AuthContext";
 import LoginForm from "componentes/organismo/LoginForm";
 import { loginRequest, getProfile, type AuthResponse } from "services/auth";
-import { type User } from "modelo/User";
+import type { User } from "services/usuario";
 
 const LoginPage = () => {
     const { login } = useAuth();
@@ -24,7 +24,7 @@ const LoginPage = () => {
             login({ token: loginData.access_token, user });
 
             hide(); // ocultamos loading
-            message.success("Inicio de sesión exitoso"); // mostramos mensaje OK
+            message.success("Inicio de sesión exitoso"); 
 
             // redireccionar según rol
             if (user.rol.toLowerCase() === "cliente") {

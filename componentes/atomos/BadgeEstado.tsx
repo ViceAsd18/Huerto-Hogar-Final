@@ -1,4 +1,4 @@
-import { Badge } from "antd";
+import { Tag } from "antd";
 
 interface BadgeEstadoProps {
     estado: 'pendiente' | 'completada' | 'cancelada';
@@ -11,7 +11,7 @@ const BadgeEstado = ({ estado }: BadgeEstadoProps) => {
         cancelada: "red",
     } as const;
 
-    return <Badge color={colorMap[estado]} text={estado.toUpperCase()} />;
+    return <Tag color={colorMap[estado]}>{estado.toUpperCase()}</Tag>;
 };
 
 export default BadgeEstado;

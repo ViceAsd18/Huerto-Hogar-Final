@@ -1,7 +1,7 @@
 // AuthContext.tsx
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import { getProfile } from "services/auth";
-import { type User } from "modelo/User";
+import type { User } from "services/usuario";
 
 interface AuthContextType {
     user: User | null;

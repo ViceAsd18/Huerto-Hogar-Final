@@ -52,6 +52,12 @@ export const crearOrden = async (orden: any) => {
     return response.data;
 };
 
+export const getOrdenById = async (id: number) => {
+    const res = await api.get(`/ventas/${id}`);
+    return res.data;  
+};
+
+
 
 
 export const getUltimasVentasByProducto = async (productoId: number, limite = 3): Promise<Venta[]> => {
@@ -84,5 +90,12 @@ export const getUltimasVentasByProducto = async (productoId: number, limite = 3)
 
     return ventas.slice(0, limite);
 };
+
+export const getVentasCliente = async (userId: number) => {
+    const ordenes = await getOrdenes();
+    return ordenes.filter((orden) => orden.usuario.id_usuario === userId);
+    
+};
+
 
 

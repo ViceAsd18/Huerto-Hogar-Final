@@ -1,5 +1,5 @@
 import { api } from "auth/api";
-import { type User } from "../modelo/User";
+import type { User } from "services/usuario";
 
 export interface AuthResponse {
     access_token: string;

@@ -59,10 +59,6 @@ const ClienteLayout = ({ children }: { children: React.ReactNode }) => {
 
                 {/* Acciones Derecha (Carrito y Perfil) */}
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                    <Badge count={0} showZero>
-                        <Button shape="circle" icon={<ShoppingCartOutlined />} />
-                    </Badge>
-
                     <Button
                         type="primary"
                         shape="round"
