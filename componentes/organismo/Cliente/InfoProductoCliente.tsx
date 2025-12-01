@@ -30,7 +30,7 @@ const InfoProductoCliente = ({ producto }: Props) => {
     // Resolver Imagen
     const nombreCategoria = (producto.categoria as any).nombre_categoria || "General";
 
-    const nombreRuta = producto.nombre_producto.toLowerCase().replace(/\s+/g, "_")
+    const nombreRuta = producto.nombre_producto?.toLowerCase().replace(/\s+/g, "_")
     const rutaImagen = '/assets/img/productos/' + nombreRuta + ".jpg" || "https://via.placeholder.com/300?text=Sin+Imagen";
 
     return (

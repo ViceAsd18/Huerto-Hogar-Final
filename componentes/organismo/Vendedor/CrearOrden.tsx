@@ -87,7 +87,7 @@ const CrearOrden = ({ productosDisponibles, clientes, onGenerarOrden, onPagarOrd
     */
     const productosFiltrados = productosDisponibles
         .filter(p => !productosEnCarrito.some(pe => pe.id_producto === p.id_producto))
-        .filter(p => p.nombre_producto.toLowerCase().includes(search.toLowerCase()));
+        .filter(p => p.nombre_producto?.toLowerCase().includes(search.toLowerCase()));
 
     return (
         <>

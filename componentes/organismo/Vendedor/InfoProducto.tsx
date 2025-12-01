@@ -40,9 +40,7 @@ const contenedorInfoStyle: React.CSSProperties = {
 
 const InfoProducto = ({ producto }: InfoProductoProps) => {
 
-    const nombreImagen = producto.nombre_producto
-        .toLowerCase()
-        .replace(/\s+/g, "_")
+    const nombreImagen = producto.nombre_producto?.toLowerCase().replace(/\s+/g, "_")
     
     return (
         <div style={contenedorStyle}>
