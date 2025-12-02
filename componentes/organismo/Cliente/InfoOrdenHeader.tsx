@@ -1,6 +1,8 @@
 import { Row, Col } from "antd";
 import InfoDato from "componentes/moleculas/Cliente/InfoDato";
 import BadgeEstado from "componentes/atomos/BadgeEstado";
+import PrecioProducto from "componentes/atomos/PrecioProducto";
+import Fecha from "componentes/atomos/Fecha";
 
 interface Props {
     fecha: string;
@@ -11,23 +13,18 @@ interface Props {
 
 const InfoOrdenHeader = ({ fecha, total, metodo_pago, estado }: Props) => {
 
-    const fechaFormateada = new Date(fecha).toLocaleDateString("es-CL", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-    });
 
     return (
         <Row gutter={[24, 24]}>
 
             <Col xs={24} sm={6}>
-                <InfoDato label="Fecha" value={fechaFormateada} />
+                <InfoDato label="Fecha" value={<Fecha fecha={fecha} variante="largo"/>} />
             </Col>
 
             <Col xs={24} sm={6}>
                 <InfoDato
                     label="Total"
-                    value={`$${total.toLocaleString("es-CL")}`}
+                    value={<PrecioProducto valor={total} />}
                 />
             </Col>  
 

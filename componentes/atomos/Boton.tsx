@@ -2,7 +2,7 @@ import { Button } from "antd";
 
 interface Props {
     children : React.ReactNode;
-    onClick?: () => void;
+    onClick?: (e : React.MouseEvent<HTMLButtonElement>) => void;
     style?: React.CSSProperties;
     color? : string;
 }

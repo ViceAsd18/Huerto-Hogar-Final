@@ -23,8 +23,8 @@ export default [
     route('detalle-producto/:id', 'routes/vendedor/detalle-productoV.tsx'),
     route('crear-orden', 'routes/vendedor/crear-orden.tsx'),
     route('orden/:id', 'routes/vendedor/detalle-orden.tsx'),
-
-
+    route('editar-producto/:id', 'routes/vendedor/editar-producto.tsx'),
+    
 
 
 

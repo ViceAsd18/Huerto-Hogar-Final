@@ -7,6 +7,7 @@ import StatCard from "componentes/moleculas/Vendedor/Dashboard/StatCard";
 import VentasGrafico from "componentes/moleculas/Vendedor/Dashboard/VentasChart";
 import PrecioProducto from "componentes/atomos/PrecioProducto";
 import BadgeEstado from "componentes/atomos/BadgeEstado";
+import Fecha from "componentes/atomos/Fecha";
 
 const DashboardPanel = () => {
     const [ordenes, setOrdenes] = useState<Orden[]>([]);
@@ -64,6 +65,7 @@ const DashboardPanel = () => {
         title: "Fecha",
         dataIndex: "fecha_venta",
         key: "fecha_venta",
+        render : (fecha: string) => <Fecha fecha={fecha} variante="corto" />,
         },
         {
         title: "Monto",

@@ -8,6 +8,8 @@ import type { Orden } from "services/orden";
 import BadgeEstado from "componentes/atomos/BadgeEstado";
 import ResumenTotales from "componentes/moleculas/Vendedor/ResumenTotales";
 import TablaProductos from "componentes/organismo/Vendedor/TablaProductoDetalle";
+import Fecha from "componentes/atomos/Fecha";
+import Titulo from "componentes/atomos/Titulo";
 
 const DetalleOrdenPage = () => {
     const { id } = useParams();
@@ -35,13 +37,13 @@ const DetalleOrdenPage = () => {
     return (
         <VendedorLayout>
             <Space direction="vertical" size="large" style={{ width: "100%" }}>
-                <Card style={{ borderRadius: 12, padding: 20 }}>
+                <Card style={{ borderRadius: 12, padding: 10 }}>
                     <Row justify="space-between" align="middle">
                         <Col>
-                            <h1 style={{ fontSize: 28, marginBottom: 8 }}>Orden #{orden.id_venta}</h1>
+                            <Titulo nivel={1} style={{marginBottom : 10 }}>Orden #{orden.id_venta}</Titulo>
                                 <BadgeEstado estado={orden.estado} />
                             <p style={{ marginTop: 8 }}>Cliente: {orden.usuario.nombre}</p>
-                            <p>Fecha: {new Date(orden.fecha_venta).toLocaleDateString()}</p>
+                            <Fecha fecha={orden.fecha_venta} variante="corto" />
                         </Col>
                     </Row>
                 </Card>
@@ -49,7 +51,7 @@ const DetalleOrdenPage = () => {
                 <Row gutter={[16, 16]}>
                     <Col xs={24} lg={16}>
                         <Card title="Productos" style={{ borderRadius: 12 }}>
-                        <TablaProductos detalles={orden.detalles} />
+                            <TablaProductos detalles={orden.detalles} />
                         </Card>
                     </Col>
 

@@ -1,13 +1,15 @@
-import { Card, Row, Col, Button } from "antd";
+import { Card, Row, Col } from "antd";
 import type { Producto } from "services/productos";
 import Imagen from "componentes/atomos/ImagenProducto";
 import BadgeStock from "componentes/atomos/BadgeStock";
 import BadgeCategoria from "componentes/atomos/BadgeCategoria";
 import PrecioProducto from "componentes/atomos/PrecioProducto";
+import Boton from "componentes/atomos/Boton";
 
 interface Props {
     producto: Producto;
     onVerDetalle: (producto: Producto) => void;
+    onEditarProducto: (producto: Producto) => void;
 }
 
 const cardStyle  : React.CSSProperties = {
@@ -48,7 +50,7 @@ const precioStyle : React.CSSProperties = {
     fontSize: 15,
 }
 
-const CardProducto = ({ producto, onVerDetalle }: Props) => {
+const CardProducto = ({ producto, onVerDetalle, onEditarProducto }: Props) => {
 
     const nombreImg = (producto.nombre_producto ?? "Producto")
         .toLowerCase()          
@@ -60,6 +62,7 @@ const CardProducto = ({ producto, onVerDetalle }: Props) => {
             hoverable
             style={cardStyle}
             bodyStyle={{ padding: 12 }}
+            onClick={() => onVerDetalle(producto)}
         >
             <div style={contenedorImagenStyle}>
                 <Imagen
@@ -92,15 +95,17 @@ const CardProducto = ({ producto, onVerDetalle }: Props) => {
                 </Row>
             </div>
 
-            <Button
-                type="primary"
-                block
-                style={{ marginTop: 12 }}
-                disabled={producto.stock === 0}
-                onClick={() => onVerDetalle(producto)}
+            <Boton 
+                style={{width : '100%', border : 'none'}} 
+                color="#4CAF50"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onEditarProducto(producto);
+                }}
             >
-                Ver detalle
-            </Button>
+                Editar Producto
+            </Boton>
+
         </Card>
     );
 };

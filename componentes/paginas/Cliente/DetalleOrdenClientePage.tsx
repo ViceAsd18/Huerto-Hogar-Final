@@ -10,6 +10,7 @@ import ListaProductosOrden from "componentes/organismo/Cliente/ListaProductosOrd
 import { getOrdenById } from "services/orden";
 import type { Orden } from "services/orden";
 import Titulo from "componentes/atomos/Titulo";
+import PrecioProducto from "componentes/atomos/PrecioProducto";
 
 const DetalleOrdenClientePage = () => {
     const { id } = useParams();

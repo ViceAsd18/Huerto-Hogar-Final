@@ -53,3 +53,12 @@ export const actualizarStockProducto = async (id_producto: number, nuevoStock: n
     });
     return response.data;
 };
+
+export const editarProducto = async (id: number, data: any) => {
+    return api.patch(`/productos/${id}`, data);
+};
+
+export const eliminarProducto = async (id: number) => {
+    const response = await api.delete(`/productos/${id}`);
+    return response.data;
+};

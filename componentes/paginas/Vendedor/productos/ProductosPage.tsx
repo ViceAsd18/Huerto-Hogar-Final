@@ -6,8 +6,8 @@ import CatalogoProductos from "componentes/organismo/Vendedor/CatalogoProductos"
 import Titulo from "componentes/atomos/Titulo"
 import ControlsTabla from "componentes/moleculas/Vendedor/ControlsTabla"
 import { getCategorias, type Categoria } from "services/categoria"
-import { getProductos } from "services/productos"
-import { Card, Space } from "antd"
+import { eliminarProducto, getProductos } from "services/productos"
+import { Card, message, Modal, Space } from "antd"
 
 
 
@@ -52,6 +52,10 @@ const ProductosPage = () => {
 
     };
 
+    const handleEditarProducto = (producto: Producto) => {
+        navigate(`/editar-producto/${producto.id_producto}`);
+    }
+
     const productosFiltrados = productos.filter(producto => {
         const coincideBusqueda = producto.nombre_producto?.toLowerCase().includes(busqueda.toLowerCase());
 
@@ -60,8 +64,6 @@ const ProductosPage = () => {
 
         return coincideBusqueda && coincideCategoria;
     });
-
-
 
 
     return (
@@ -84,6 +86,7 @@ const ProductosPage = () => {
                     <CatalogoProductos
                         productos={productosFiltrados}
                         onVerDetalle={handleVerDetalle}
+                        onEditarProducto={handleEditarProducto}
                     />
                 </Space>
             </Card>

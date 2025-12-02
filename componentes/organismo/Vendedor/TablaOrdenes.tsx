@@ -5,7 +5,7 @@ import ControlsTabla from "componentes/moleculas/Vendedor/ControlsTabla";
 import PrecioProducto from "componentes/atomos/PrecioProducto";
 import BadgeEstado from "componentes/atomos/BadgeEstado";
 import Boton from "componentes/atomos/Boton";
-import type { Color } from "antd/es/color-picker";
+import Fecha from "componentes/atomos/Fecha";
 
 interface Props {
     ordenes: Orden[];
@@ -19,12 +19,6 @@ interface Props {
     onCancelarOrden: (orden: Orden) => void;
 }
 
-const estadosColor: Record<string, string> = {
-    pendiente: "orange",
-    completada: "green",
-    cancelada: "red",
-};
-
 const TablaOrdenes = ({
     ordenes,
     busqueda, onBusquedaChange,
@@ -36,7 +30,7 @@ const TablaOrdenes = ({
         { title: "ID Orden", dataIndex: "id_venta", key: "id_venta", width: "10%" },
         { title: "Cliente", dataIndex: ["usuario","nombre"], key: "cliente", width: "25%" },
         { title: "Fecha", dataIndex: "fecha_venta", key: "fecha_venta", width: "15%", 
-          render : (fecha: string) => new Date(fecha).toLocaleString()
+          render : (fecha : string) => <Fecha fecha={fecha} variante="corto" />
         },
         
         {

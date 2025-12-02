@@ -54,7 +54,7 @@ vi.mock('services/categoria', () => ({ __esModule: true, getCategorias: () => mo
 const mockNavigate = vi.fn();
 vi.mock('react-router', () => ({ useNavigate: () => mockNavigate }));
 
-import AgregarProductoForm from '../AgregarProductoForm';
+import AgregarProductoForm from '../FormularioProducto';
 
 describe('AgregarProductoForm', () => {
   beforeEach(() => {
