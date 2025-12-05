@@ -20,7 +20,7 @@ const ClienteLayout = ({ children }: { children: React.ReactNode }) => {
 
 
     return (
-        <Layout style={{ minHeight: '100vh', background: '#fff' }}>
+        <Layout style={{ minHeight: '100vh', background: '#f9f9f9' }}>
             <Header style={headerStyle}>
                 <BarraNavegacion/>
             </Header>
