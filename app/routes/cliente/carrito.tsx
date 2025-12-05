@@ -1,0 +1,12 @@
+import { PrivateRoute } from "auth/PrivateRoute"
+import CarritoClientePage from "componentes/paginas/Cliente/CarritoClientePage"
+
+const carrito = () => {
+    return (
+        <PrivateRoute rol="cliente">
+            <CarritoClientePage/>
+        </PrivateRoute>
+    )
+}
+
+export default carrito

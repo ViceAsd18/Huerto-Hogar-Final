@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Typography, Space, Divider } from "antd";
 import type {Producto} from "../../../services/productos";
-import ImagenProducto from "../../atomos/ImagenProducto";
+import ImagenProducto from "../../atomos/Imagen";
 import Titulo from "../../atomos/Titulo";
 import BadgeStock from "../../atomos/BadgeStock";
 import BadgeCategoria from "../../atomos/BadgeCategoria";

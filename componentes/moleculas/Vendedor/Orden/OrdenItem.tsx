@@ -1,6 +1,6 @@
 import { InputNumber } from "antd";
 import Boton from "componentes/atomos/Boton";
-import Imagen from "componentes/atomos/ImagenProducto";
+import Imagen from "componentes/atomos/Imagen";
 import type { Producto } from "services/productos";
 
 type Props = {

@@ -1,14 +1,17 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
-    //Ruta inicial
+    //Ruta Cliente
     index("routes/cliente/home_cliente.tsx"),
     route("cliente/home_cliente", "routes/cliente/home_cliente.tsx", { id: "cliente-home" }),
     route("cliente/producto/:id", "routes/cliente/detalle_producto.tsx"),
     route("cliente/mis-ordenes", "routes/cliente/mis_ordenes.tsx"),
     route("cliente/orden/:id", "routes/cliente/detalle_orden_cliente.tsx"),
     route("cliente/tienda", "routes/cliente/tienda.tsx"),
-
+    route("cliente/nosotros", "routes/cliente/nosotros.tsx"),
+    route("cliente/blogs", "routes/cliente/blogs_cliente.tsx"),
+    route("cliente/contacto", "routes/cliente/contacto.tsx"),
+    route("cliente/carrito/:id", "routes/cliente/carrito.tsx"),
 
     //Ruta Publica
     route('login', 'routes/login.tsx'),

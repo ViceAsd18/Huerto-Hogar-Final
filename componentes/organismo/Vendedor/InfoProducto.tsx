@@ -1,6 +1,6 @@
 import React from "react";
 import type { Producto } from "services/productos";
-import ImagenProducto from "componentes/atomos/ImagenProducto";
+import ImagenProducto from "componentes/atomos/Imagen";
 import CardInfoProducto from "componentes/moleculas/Vendedor/CardInfoProducto";
 
 interface InfoProductoProps {

@@ -4,7 +4,7 @@ import Boton from "componentes/atomos/Boton";
 import type { Producto } from "services/productos";
 import BadgeStock from "componentes/atomos/BadgeStock";
 import BadgeCategoria from "componentes/atomos/BadgeCategoria";
-import Imagen from "componentes/atomos/ImagenProducto";
+import Imagen from "componentes/atomos/Imagen";
 import PrecioProducto from "componentes/atomos/PrecioProducto";
 
 type Props = {

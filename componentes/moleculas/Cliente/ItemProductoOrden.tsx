@@ -1,4 +1,4 @@
-import ImagenProducto from "../../atomos/ImagenProducto";
+import ImagenProducto from "../../atomos/Imagen";
 
 interface Props {
     imagen: string;

@@ -1,7 +1,7 @@
 import { Card, Row, Col, Button, Tag } from "antd";
 import { useNavigate } from "react-router";
 import type { Producto } from "../../../services/productos";
-import Imagen from "../../atomos/ImagenProducto";
+import Imagen from "../../atomos/Imagen";
 import BadgeStock from "../../atomos/BadgeStock";
 
 interface Props {

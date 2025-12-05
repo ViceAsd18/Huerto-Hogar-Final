@@ -81,10 +81,9 @@ const HomeClientePage = () => {
                     </div>
                 ) : (
                     <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-                        gap: "24px",
-                        width: "100%",
+                        display : 'flex',
+                        justifyContent : 'space-between',
+                        flexWrap : 'wrap',
                     }}>
                         {productosDestacados.map((prod) => (
                             <CardProductoCliente

@@ -1,6 +1,6 @@
 import { Card, Row, Col } from "antd";
 import type { Producto } from "services/productos";
-import Imagen from "componentes/atomos/ImagenProducto";
+import Imagen from "componentes/atomos/Imagen";
 import BadgeStock from "componentes/atomos/BadgeStock";
 import BadgeCategoria from "componentes/atomos/BadgeCategoria";
 import PrecioProducto from "componentes/atomos/PrecioProducto";
