@@ -26,7 +26,7 @@ const ClienteLayout = ({ children }: { children: React.ReactNode }) => {
             </Header>
 
             <Content style={{ padding: '0 24px', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
-                <div style={{ margin: '50px 0', minHeight: 380 }}>
+                <div style={{ margin: '50px 0', minHeight: 380, gap : 50, display: 'flex', flexDirection: 'column' }}>
                     {children}
                 </div>
             </Content>

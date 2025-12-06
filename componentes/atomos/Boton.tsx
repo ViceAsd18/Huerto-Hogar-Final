@@ -9,11 +9,18 @@ interface Props {
 }
 
 const Boton = ({ children, onClick, style, color, htmlType = "button" }: Props) => {
+    
+    const finalStyle = {
+        ...style,
+        ...(color && { backgroundColor: color }),
+        color: "white",
+    };
+    
     return (
         <Button
             onClick={onClick}
             htmlType={htmlType}
-            style={{ ...style, backgroundColor: color, color: "white" }}
+            style={finalStyle}
         >
             {children}
         </Button>

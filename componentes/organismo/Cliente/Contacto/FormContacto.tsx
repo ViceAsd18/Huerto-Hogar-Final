@@ -10,7 +10,7 @@ const FormularioContacto = () => {
 
     const onFinish = (values: any) => {
         console.log("Formulario enviado:", values);
-        message.info("¡Mensaje enviado!");
+        message.success("¡Mensaje enviado!");
         form.resetFields();
     };
 
