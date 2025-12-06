@@ -1,8 +1,12 @@
-import { Card, Row, Col, Button, Tag } from "antd";
+import React from "react";
+import { Card, Row, Col, Button, Tag, message } from "antd";
 import { useNavigate } from "react-router";
+import { ShoppingCartOutlined, EyeOutlined } from "@ant-design/icons";
+
 import type { Producto } from "../../../services/productos";
 import Imagen from "../../atomos/Imagen";
 import BadgeStock from "../../atomos/BadgeStock";
+import { useCart } from "auth/CartContext";
 
 interface Props {
     producto: Producto;
@@ -16,6 +20,9 @@ const cardStyle: React.CSSProperties = {
     margin: "0 auto",
     border: "1px solid #f0f0f0",
     transition: "all 0.3s ease",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
 };
 
 const contenedorImagenStyle: React.CSSProperties = {
@@ -41,15 +48,20 @@ const nombreStyle: React.CSSProperties = {
 
 const CardProductoCliente = ({ producto }: Props) => {
     const navigate = useNavigate();
+    const { agregarAlCarrito } = useCart();
 
-
-    const nombreRuta = producto.nombre_producto?.toLowerCase().replace(/\s+/g, "_")
+    const nombreRuta = producto.nombre_producto?.toLowerCase().replace(/\s+/g, "_");
     const rutaImagen = '/assets/img/productos/' + nombreRuta + ".jpg";
-
     const nombreCategoria = (producto.categoria as any).nombre_categoria || "General";
 
+    const handleAgregar = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        agregarAlCarrito(producto);
+        message.success("¡Producto agregado!");
+    };
+
     return (
-        <Card hoverable style={cardStyle} bodyStyle={{ padding: "16px" }}>
+        <Card hoverable style={cardStyle} bodyStyle={{ padding: "16px", flex: 1, display: "flex", flexDirection: "column" }}>
             <div style={contenedorImagenStyle}>
                 <Imagen
                     src={rutaImagen}
@@ -60,7 +72,7 @@ const CardProductoCliente = ({ producto }: Props) => {
                 />
             </div>
 
-            <div style={{ marginTop: 12 }}>
+            <div style={{ marginTop: 12, flex: 1 }}>
                 <Tag color="blue" style={{ marginBottom: 8, border: 'none', background: '#e6f7ff', color: '#1890ff' }}>
                     {nombreCategoria}
                 </Tag>
@@ -81,16 +93,25 @@ const CardProductoCliente = ({ producto }: Props) => {
                 </Row>
             </div>
 
-            <Button
-                type="primary"
-                block
-                size="large"
-                style={{ marginTop: 16, borderRadius: 8, fontWeight: 600 }}
-                disabled={producto.stock === 0}
-                onClick={() => navigate(`/cliente/producto/${producto.id_producto}`)}
-            >
-                Ver detalle
-            </Button>
+            <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
+                <Button
+                    onClick={() => navigate(`/cliente/producto/${producto.id_producto}`)}
+                    style={{ flex: 1 }}
+                    icon={<EyeOutlined />}
+                >
+                    Ver
+                </Button>
+
+                <Button
+                    type="primary"
+                    disabled={producto.stock === 0}
+                    onClick={handleAgregar}
+                    style={{ flex: 1, fontWeight: 600 }}
+                    icon={<ShoppingCartOutlined />}
+                >
+                    Agregar
+                </Button>
+            </div>
         </Card>
     );
 };

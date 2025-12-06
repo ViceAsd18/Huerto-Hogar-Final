@@ -1,11 +1,11 @@
-import { PrivateRoute } from "auth/PrivateRoute"
+//import { PrivateRoute } from "auth/PrivateRoute"
 import CarritoClientePage from "componentes/paginas/Cliente/CarritoClientePage"
 
 const carrito = () => {
     return (
-        <PrivateRoute rol="cliente">
+        //<PrivateRoute rol="cliente">
             <CarritoClientePage/>
-        </PrivateRoute>
+        //</PrivateRoute>
     )
 }
 
