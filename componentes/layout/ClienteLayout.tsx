@@ -16,6 +16,7 @@ const ClienteLayout = ({ children }: { children: React.ReactNode }) => {
         boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
         padding: '10px 24px',
         height: '100%',
+        overflow : 'auto'
     };
 
 
@@ -26,7 +27,7 @@ const ClienteLayout = ({ children }: { children: React.ReactNode }) => {
             </Header>
 
             <Content style={{ padding: '0 24px', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
-                <div style={{ margin: '50px 0', minHeight: 380, gap : 50, display: 'flex', flexDirection: 'column' }}>
+                <div style={{ margin: '50px 0', minHeight: 380, gap : 100, display: 'flex', flexDirection: 'column' }}>
                     {children}
                 </div>
             </Content>

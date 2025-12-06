@@ -28,6 +28,25 @@ body {
 }
 
 
+/* Tablet: filas de 2 */
+@media (max-width: 750px) {
+  .galeria-imagenes {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2% !important;
+  }
+
+  .galeria-imagenes .big {
+    grid-column: span 2 !important;
+    min-height: 250px !important;
+  }
+
+  .galeria-imagenes .small {
+    grid-column: span 1 !important;
+    min-height: 70px !important;
+    min-width: 70px !important;
+  }
+}
 
 
 
