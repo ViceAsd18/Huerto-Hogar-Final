@@ -12,6 +12,7 @@ export default [
     route("cliente/blogs", "routes/cliente/blogs_cliente.tsx"),
     route("cliente/contacto", "routes/cliente/contacto.tsx"),
     route("cliente/carrito/:id", "routes/cliente/carrito.tsx"),
+    route("cliente/detalle-blog/:id", "routes/cliente/detalle_blog.tsx"),
 
     //Ruta Publica
     route('login', 'routes/login.tsx'),

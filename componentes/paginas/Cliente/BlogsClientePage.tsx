@@ -1,9 +1,10 @@
 import ClienteLayout from "componentes/layout/ClienteLayout"
+import BlogDestacados from "componentes/organismo/Cliente/Blog/BlogDestacado";
 
 const BlogsClientePage = () => {
     return (
         <ClienteLayout>
-            Esta es la página de Blogs del Cliente
+            <BlogDestacados/>
         </ClienteLayout>
     )
 }

@@ -26,7 +26,7 @@ const ClienteLayout = ({ children }: { children: React.ReactNode }) => {
                 <BarraNavegacion/>
             </Header>
 
-            <Content style={{ padding: '0 24px', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
+            <Content style={{ padding: '0 1%', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
                 <div style={{ margin: '50px 0', minHeight: 380, gap : 100, display: 'flex', flexDirection: 'column' }}>
                     {children}
                 </div>
