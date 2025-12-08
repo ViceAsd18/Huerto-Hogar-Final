@@ -3,7 +3,7 @@ import DashboardPage from "componentes/paginas/Vendedor/dashboard/DashboardPage"
 
 const dashboard = () => {
     return (
-        <PrivateRoute rol="empleado">
+        <PrivateRoute rol={['empleado', 'admin']}>
             <DashboardPage />
         </PrivateRoute>
     )

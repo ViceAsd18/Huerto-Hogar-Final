@@ -29,9 +29,16 @@ const LoginPage = () => {
             // redireccionar según rol
             if (user.rol.toLowerCase() === "cliente") {
                 navigate("/");
-            } else {
-                navigate("/dashboard");
+            } 
+
+            if (user.rol.toLowerCase() === 'empleado'){
+                navigate ("/dashboard");
             }
+
+            if (user.rol.toLowerCase() === "admin") {
+                navigate("/");
+            }
+
 
         } catch (error: any) {
             hide(); // ocultamos loading si falla

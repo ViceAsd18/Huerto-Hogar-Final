@@ -3,7 +3,7 @@ import EditarProductoPage from "componentes/paginas/Vendedor/productos/EditarPro
 
 const editar_producto = () => {
     return (
-        <PrivateRoute rol="empleado">
+        <PrivateRoute rol={['empleado', 'admin']}>
             <EditarProductoPage/>
         </PrivateRoute>
     )

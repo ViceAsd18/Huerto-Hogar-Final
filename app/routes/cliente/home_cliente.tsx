@@ -1,10 +1,13 @@
+import { PublicRoute } from "auth/PublicRoute";
 import HomeClientePage from "componentes/paginas/Cliente/HomeClientePage"
 
 const HomeCliente = ()  => {
     return (
-        
-        <HomeClientePage></HomeClientePage>
+        <PublicRoute bloquear={['empleado']}>
+            <HomeClientePage />
+        </PublicRoute>
     )
+
 }
 
 export default HomeCliente;

@@ -1,8 +1,11 @@
+import { PublicRoute } from "auth/PublicRoute";
 import BlogsClientePage from "componentes/paginas/Cliente/BlogsClientePage";
 
 const blogs_cliente = () => {
     return (
-        <BlogsClientePage/>
+        <PublicRoute bloquear={['empleado']}>
+            <BlogsClientePage />
+        </PublicRoute>
     )
 }
 

@@ -3,7 +3,7 @@ import OrdenesPage from "componentes/paginas/Vendedor/ordenes/OrdenesPage"
 
 const orden = () => {
     return (
-        <PrivateRoute rol="empleado">
+        <PrivateRoute rol={['empleado', 'admin']}>
             <OrdenesPage />
         </PrivateRoute>
     )

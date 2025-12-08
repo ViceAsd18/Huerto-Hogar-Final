@@ -3,7 +3,7 @@ import CrearOrdenPage from "componentes/paginas/Vendedor/ordenes/CrearOrdenPage"
 
 const crear_orden = () => {
     return (
-        <PrivateRoute rol="empleado">
+        <PrivateRoute rol={['empleado', 'admin']}>
             <CrearOrdenPage/>
         </PrivateRoute>
     )

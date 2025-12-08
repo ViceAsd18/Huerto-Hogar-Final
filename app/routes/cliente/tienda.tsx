@@ -1,3 +1,4 @@
+import { PublicRoute } from "auth/PublicRoute";
 import TiendaPage from "../../../componentes/paginas/Cliente/TiendaPage";
 
 export function meta() {
@@ -5,5 +6,8 @@ export function meta() {
 }
 
 export default function TiendaRoute() {
-    return <TiendaPage />;
+    return <PublicRoute bloquear={['empleado']}>
+        <TiendaPage />
+    </PublicRoute>
+    ;
 }

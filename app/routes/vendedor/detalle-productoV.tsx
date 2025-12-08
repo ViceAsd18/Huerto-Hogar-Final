@@ -3,7 +3,7 @@ import DetalleProductoPage from "componentes/paginas/Vendedor/productos/DetalleP
 
 const productoDetalle = () => {
     return (
-        <PrivateRoute rol="empleado">
+        <PrivateRoute rol={['empleado', 'admin']}>
             <DetalleProductoPage/>
         </PrivateRoute>
     )

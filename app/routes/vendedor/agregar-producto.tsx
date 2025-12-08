@@ -3,7 +3,7 @@ import { PrivateRoute } from "auth/PrivateRoute"
 
 const agregar_producto = () => {
     return (
-        <PrivateRoute rol="empleado">
+        <PrivateRoute rol={['empleado', 'admin']}>
             <AgregarProductoPage/>
         </PrivateRoute>
     )
