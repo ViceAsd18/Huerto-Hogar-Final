@@ -10,7 +10,6 @@ import ListaProductosOrden from "componentes/organismo/Cliente/ListaProductosOrd
 import { getOrdenById } from "services/orden";
 import type { Orden } from "services/orden";
 import Titulo from "componentes/atomos/Titulo";
-import PrecioProducto from "componentes/atomos/PrecioProducto";
 
 const DetalleOrdenClientePage = () => {
     const { id } = useParams();
@@ -70,7 +69,7 @@ const DetalleOrdenClientePage = () => {
                     Volver a Mis Órdenes
                 </Button>
 
-                <Titulo nivel={1}>Detalle de Orden #{orden.id_venta}</Titulo>
+                <Titulo nivel={1} variante="titulo">Detalle de Orden #{orden.id_venta}</Titulo>
 
                 <Card style={{ borderRadius: 12, marginTop: 24 }}>
                     <InfoOrdenHeader

@@ -5,6 +5,7 @@ import ClienteLayout from "../../layout/ClienteLayout";
 import CardProductoCliente from "../../moleculas/Cliente/CardProductoCliente";
 import { getProductos } from "../../../services/productos";
 import type { Producto } from "../../../services/productos";
+import Titulo from "componentes/atomos/Titulo";
 
 const { Title, Text } = Typography;
 
@@ -45,7 +46,7 @@ const TiendaPage = () => {
             <div style={{ padding: "20px 0", maxWidth: "1200px", margin: "0 auto" }}>
 
                 <div style={{ marginBottom: 40 }}>
-                    <Title level={1} style={{ marginBottom: 8 }}>Nuestro Catálogo</Title>
+                    <Titulo variante="titulo" nivel={1}>Nuestro Catálogo</Titulo>
                     <Text type="secondary" style={{ fontSize: 16 }}>
                         Encuentra todo lo que buscas en un solo lugar.
                     </Text>

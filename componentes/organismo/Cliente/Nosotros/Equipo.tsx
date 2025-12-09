@@ -13,7 +13,7 @@ const contenedorEquipo: React.CSSProperties = {
 const Equipo = () => {
     return (
         <div style={{ padding: "60px 20px", backgroundColor: "#FAFAFA", borderRadius: 12 }}>
-            <Titulo nivel={2} style={{textAlign : 'center'}}>El equipo detrás del proyecto</Titulo>
+            <Titulo variante="titulo" nivel={2} style={{textAlign : 'center'}}>El equipo detrás del proyecto</Titulo>
 
             <div style={contenedorEquipo}>
                 <TeamCard

@@ -5,6 +5,7 @@ import type { Producto } from "../../../services/productos";
 import CardProductoCliente from "../../moleculas/Cliente/CardProductoCliente";
 import { useNavigate } from "react-router";
 import { getProductos } from "../../../services/productos";
+import Titulo from "componentes/atomos/Titulo";
 
 const { Title, Paragraph } = Typography;
 
@@ -70,10 +71,8 @@ const HomeClientePage = () => {
                 </div>
             </div>
 
-            <div style={{ marginTop: '60px' }}>
-                <Title level={2} style={{ textAlign: 'center', marginBottom: '40px' }}>
-                    Productos Destacados
-                </Title>
+            <div style={{ marginTop: '60px', textAlign: 'center' }}>
+                <Titulo variante="titulo" nivel={2}>Productos Destacados</Titulo>
 
                 {loading ? (
                     <div style={{ textAlign: 'center', padding: '50px' }}>

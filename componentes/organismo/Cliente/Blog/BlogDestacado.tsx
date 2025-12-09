@@ -56,10 +56,12 @@ const BlogDestacados = () => {
     };
 
     return (
-        <section style={seccionStyle}>
+        <section style={seccionStyle} >
 
-            <Titulo nivel={1}>Actualidad HuertoHogar</Titulo>
-            <Texto>Novedades, recetas y eventos de nuestra comunidad.</Texto>
+            <div style={{textAlign : 'center'}}>
+                <Titulo nivel={1} variante="titulo">Actualidad HuertoHogar</Titulo>
+                <Texto variante="descripcion">Novedades, recetas y eventos de nuestra comunidad.</Texto>
+            </div>
 
             <div style={grid} className="blog-grid">
                 <div style={{ gridColumn: "1 / 2", gridRow: "1 / 3" }}>

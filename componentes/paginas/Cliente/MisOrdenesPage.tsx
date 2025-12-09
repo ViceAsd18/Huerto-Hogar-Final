@@ -7,7 +7,7 @@ import { useAuth } from "auth/AuthContext";
 import Titulo from "componentes/atomos/Titulo";
 
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const MisOrdenesPage = () => {
     const { user } = useAuth();

@@ -20,7 +20,7 @@ const gridStyle: React.CSSProperties = {
 const Proposito = () => {
     return (
         <section style={contenedorStyle}>
-            <Titulo nivel={2}>Nuestro Propósito</Titulo>
+            <Titulo nivel={2} variante="titulo">Nuestro Propósito</Titulo>
 
             <div style={gridStyle}>
                 <InfoProposito

@@ -16,11 +16,11 @@ const FormularioContacto = () => {
 
 return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-        <Titulo nivel={1}>
+        <Titulo nivel={1} variante="titulo">
             Conéctate con HuertoHogar
         </Titulo>
 
-        <Texto style={{fontSize : 18}}>Estamos aqui para ayudarte. Envíanos tus consultas o sugerencias y te responderemos a la brevedad.</Texto>
+        <Texto style={{fontSize : 18}} variante="resaltado">Estamos aqui para ayudarte. Envíanos tus consultas o sugerencias y te responderemos a la brevedad.</Texto>
 
         <Form layout="vertical" onFinish={onFinish} size="large" form={form} style={{ marginTop: 20}}>
 

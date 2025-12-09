@@ -27,7 +27,7 @@ const rutaImg = "/assets/img/nosotros/galeria/";
 const GaleriaImagenes: React.FC = () => {
     return (
         <div style={{ backgroundColor: "#FAFAFA", padding: "40px 0" }}>
-            <Titulo nivel={2} style={{ textAlign: "center" }}>
+            <Titulo variante="titulo" nivel={2} style={{ textAlign: "center", marginBottom : 20 }}>
                 El Corazón de HuertoHogar
             </Titulo>
 

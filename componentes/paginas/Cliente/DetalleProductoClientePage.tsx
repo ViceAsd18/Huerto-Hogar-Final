@@ -6,6 +6,11 @@ import ClienteLayout from "../../layout/ClienteLayout";
 import { getProductoById } from "../../../services/productos";
 import type { Producto } from "../../../services/productos";
 import InfoProductoCliente from "componentes/organismo/Cliente/InfoProductoCliente";
+import Imagen from "componentes/atomos/Imagen";
+import InfoProducto from "componentes/moleculas/Cliente/Tienda/InfoProducto";
+import FichaProducto from "componentes/organismo/Cliente/Tienda/FichaProducto";
+
+
 
 const DetalleProductoClientePage = () => {
     const { id } = useParams();
@@ -36,42 +41,14 @@ const DetalleProductoClientePage = () => {
         }
     };
 
+
+    if (!producto){
+        return <h1>Producto no encontrado</h1>
+    }
+
     return (
         <ClienteLayout>
-            <div style={{ padding: "20px 0", maxWidth: "1200px", margin: "0 auto" }}>
-         
-                <Button
-                    type="text"
-                    icon={<ArrowLeftOutlined />}
-                    onClick={() => navigate("/cliente/home_cliente")}
-                    style={{ marginBottom: 20, fontSize: '16px' }}
-                >
-                    Volver al catálogo
-                </Button>
-
-                {loading && (
-                    <div style={{ textAlign: "center", padding: 100 }}>
-                        <Spin size="large" tip="Cargando detalles..." />
-                    </div>
-                )}
-
-                {!loading && !producto && (
-                    <Result
-                        status="404"
-                        title="Producto no encontrado"
-                        subTitle="Lo sentimos, el producto que buscas no existe."
-                         extra={
-                            <Button type="primary" onClick={() => navigate("/cliente/home_cliente")}>
-                                Ir al Inicio
-                            </Button>
-                        }
-                    />
-                )}
-
-                {!loading && producto && (
-                    <InfoProductoCliente producto={producto} />
-                )}
-            </div>
+            <FichaProducto producto={producto} />
         </ClienteLayout>
     );
 };
