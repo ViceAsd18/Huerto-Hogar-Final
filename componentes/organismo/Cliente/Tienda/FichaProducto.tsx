@@ -22,16 +22,15 @@ const FichaProducto = ({producto}: Props) => {
     const nombreImg = producto?.nombre_producto?.toLowerCase().replace(/\s+/g, '_') + '.jpg';
     
     return (
-        
        <>
-        <div style={{display : 'grid', gridTemplateColumns : "repeat(auto-fit, minmax(400px, 1fr))",gap : 30, alignItems : 'start'}}>
+        <div style={{display : 'grid', gridTemplateColumns : "repeat(auto-fit, minmax(320px, 1fr))",gap : 30, alignItems : 'start'}}>
             <div>
-                            <Imagen
-                src={'/assets/img/productos/' + nombreImg}
-                alt="Imagen del producto"
-                style={imagenStyle}
-            >
-            </Imagen>
+                <Imagen
+                    src={'/assets/img/productos/' + nombreImg}
+                    alt="Imagen del producto"
+                    style={imagenStyle}
+                >
+                </Imagen>
             </div>
             
             <div style={{display : 'flex', flexDirection : 'column'}}>

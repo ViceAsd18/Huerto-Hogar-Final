@@ -1,4 +1,4 @@
-import { ShoppingCartOutlined, UserOutlined, CarOutlined, SwapOutlined, RetweetOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, UserOutlined, CarOutlined, SwapOutlined, RetweetOutlined, LoginOutlined, LogoutOutlined } from "@ant-design/icons";
 import IconoRedondo from "componentes/atomos/IconoRedondo";
 import { useNavigate } from "react-router";
 import { useAuth } from "auth/AuthContext";
@@ -10,7 +10,8 @@ const iconStyle: React.CSSProperties = {
 
 const AccionesUsuario = () => {
     const navigate = useNavigate();
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
+
 
     const cambiarVista = () => {
         if (window.location.pathname.startsWith("/admin")) {
@@ -35,12 +36,22 @@ const AccionesUsuario = () => {
                 onClick={() => navigate(`/cliente/carrito/${user?.id_usuario}`)}
                 icon={<ShoppingCartOutlined style={iconStyle} />}
             />
-
-            <IconoRedondo
-                title="Mi Cuenta"
-                onClick={() => navigate("/login")}
-                icon={<UserOutlined style={iconStyle} />}
-            />
+            {!user ? (
+                <IconoRedondo
+                    title="Iniciar Sesión"
+                    onClick={() => navigate("/login")}
+                    icon={<LoginOutlined style={iconStyle} />}
+                />
+            ) : (
+                <IconoRedondo
+                    title="Cerrar Sesión"
+                    onClick={() => {
+                        logout();
+                        navigate("/login");
+                    }}
+                    icon={<LogoutOutlined style={iconStyle} />}
+                />
+            )}
 
             {user?.rol === 'admin' && (
                 <IconoRedondo
