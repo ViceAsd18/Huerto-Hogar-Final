@@ -1,8 +1,11 @@
+import { PrivateRoute } from "auth/PrivateRoute";
 import EditarUsuarioPage from "componentes/paginas/Admin/usuarios/EditarUsuarioPage"
 
 const editar_usuario = () => {
     return (
-        <EditarUsuarioPage/>
+        <PrivateRoute rol={['admin']}>
+            <EditarUsuarioPage/>
+        </PrivateRoute>
     )
 }
 

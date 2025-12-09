@@ -6,7 +6,7 @@ import ClienteLayout from "componentes/layout/ClienteLayout";
 import Imagen from "componentes/atomos/Imagen";
 import { useCart } from "auth/CartContext";
 import { useAuth } from "auth/AuthContext";
-import { crearOrden } from "services/orden";
+import { actualizarOrden, crearOrden } from "services/orden";
 
 const { Title, Text } = Typography;
 
@@ -32,18 +32,20 @@ const CarritoClientePage = () => {
                 subtotal: item.precio * item.cantidad
             }));
 
+
             await crearOrden({
                 usuarioId: user.id_usuario,
                 fecha_venta: new Date().toISOString(),
                 total: totalFinal,
-                estado: "pendiente",
-                metodo_pago: "web",
+                estado:"completada",
+                metodo_pago: "efectivo",
                 detalles: detalles
             });
 
             message.success("¡Pedido recibido con éxito!");
             limpiarCarrito();
             navigate("/cliente/mis-ordenes");
+
 
         } catch (error) {
             console.error(error);

@@ -1,3 +1,4 @@
+import { PublicRoute } from "auth/PublicRoute";
 import DetalleProductoClientePage from "componentes/paginas/Cliente/DetalleProductoClientePage";
 
 export function meta() {
@@ -8,5 +9,7 @@ export function meta() {
 }
 
 export default function DetalleProductoRoute() {
-    return <DetalleProductoClientePage />;
+    return <PublicRoute bloquear={['empleado']}>
+        <DetalleProductoClientePage />;
+    </PublicRoute>
 }

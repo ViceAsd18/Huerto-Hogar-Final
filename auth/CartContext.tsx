@@ -19,10 +19,7 @@ const CartContext = createContext<CartContextType | null>(null);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
     const { user } = useAuth();
 
-    console.log("🔑 Usuario actual:", user);
-
     const KEY = `carrito_${user?.id_usuario ?? "anon"}`;
-    console.log("🎯 KEY generada:", KEY);
 
     const [carrito, setCarrito] = useState<CartItem[]>([]);
 
@@ -30,7 +27,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         if (typeof window === "undefined") return;
 
-        console.log("📥 Cargando carrito desde localStorage con KEY:", KEY);
 
         try {
         const saved = localStorage.getItem(KEY);
@@ -49,16 +45,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         try {
         localStorage.setItem(KEY, JSON.stringify(carrito));
         } catch (err) {
-        console.error("💥 ERROR guardando localStorage:", err);
         }
     }, [carrito, KEY]);
 
     // AGREGAR
     const agregarAlCarrito = (producto: Producto, cantidad = 1) => {
-        console.log("🛒 AGREGAR", producto.nombre_producto, "cantidad:", cantidad);
 
         setCarrito(prev => {
-        console.log("📌 Carrito antes:", prev);
 
         const existe = prev.find(item => item.id_producto === producto.id_producto);
 
@@ -70,7 +63,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             )
             : [...prev, { ...producto, cantidad }];
 
-        console.log("📌 Carrito después:", newState);
 
         return newState;
         });
