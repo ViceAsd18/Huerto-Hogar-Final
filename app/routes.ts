@@ -28,8 +28,9 @@ export default [
     route('crear-orden', 'routes/vendedor/crear-orden.tsx'),
     route('orden/:id', 'routes/vendedor/detalle-orden.tsx'),
     route('editar-producto/:id', 'routes/vendedor/editar-producto.tsx'),
-    route('usuarios', 'routes/vendedor/usuarios.tsx')
     
+    route('usuarios', 'routes/admin/usuarios.tsx'),
+    route('admin/editar-usuario/:id', 'routes/admin/editar_usuario.tsx')
 
 
 

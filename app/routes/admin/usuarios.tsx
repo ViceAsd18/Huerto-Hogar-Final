@@ -1,5 +1,5 @@
 import { PrivateRoute } from "auth/PrivateRoute";
-import UsuariosPage from "componentes/paginas/Vendedor/empleado/UsuariosPage";
+import UsuariosPage from "componentes/paginas/Admin/usuarios/UsuariosPage";
 
 const usuarios = () => {
     return (

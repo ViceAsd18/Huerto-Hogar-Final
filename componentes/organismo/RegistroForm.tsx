@@ -1,15 +1,23 @@
-import { Form, Input, Button, Card, Select, message } from "antd";
+import { Form, Input, Button, Card, Select } from "antd";
 import Titulo from "componentes/atomos/Titulo";
 import { useNavigate } from "react-router";
+import { useAuth } from "auth/AuthContext";
 
 interface Props {
-    onSubmit: (nombre: string, email: string, password: string) => void;
+    onSubmit: (nombre: string, email: string, password: string, rol?: string) => void;
     loading?: boolean;
 }
 
 const RegisterForm = ({ onSubmit, loading = false }: Props) => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
+    const { user, loading: authLoading } = useAuth();
+
+    // Mientras carga el AuthContext, no renderizamos nada
+    if (authLoading) return null;
+
+    // Solo mostrar select si hay usuario logueado y es admin
+    const mostrarSelectRol = !!user && user.rol === "admin";
 
     const colors = {
         primary: "#2690ed",
@@ -50,15 +58,12 @@ const RegisterForm = ({ onSubmit, loading = false }: Props) => {
         footer: { marginTop: 20, textAlign: "center", fontSize: 14, color: colors.textSecondary }
     };
 
-
-
-
     const handleSubmit = async (values: any) => {
-        onSubmit(values.nombre, values.email, values.password);
+        // Si no es admin, el rol por defecto será "cliente"
+        const rol = mostrarSelectRol ? values.rol : "cliente";
+        onSubmit(values.nombre, values.email, values.password, rol);
         form.resetFields();
     };
-
-
 
     return (
         <div style={styles.pageContainer}>
@@ -94,6 +99,20 @@ const RegisterForm = ({ onSubmit, loading = false }: Props) => {
                     >
                         <Input.Password placeholder="********" style={styles.input} />
                     </Form.Item>
+
+                    {mostrarSelectRol && (
+                        <Form.Item
+                            label="Rol"
+                            name="rol"
+                            rules={[{ required: true, message: "Selecciona un rol" }]}
+                        >
+                            <Select>
+                                <Select.Option value="cliente">Cliente</Select.Option>
+                                <Select.Option value="admin">Admin</Select.Option>
+                                <Select.Option value="empleado">Vendedor</Select.Option>
+                            </Select>
+                        </Form.Item>
+                    )}
 
                     <Button type="primary" htmlType="submit" block loading={loading} style={styles.button}>
                         Registrarse

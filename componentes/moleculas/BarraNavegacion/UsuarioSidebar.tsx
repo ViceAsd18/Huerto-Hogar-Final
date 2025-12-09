@@ -43,21 +43,21 @@ const UsuarioSidebar = ({ colapsado }: { colapsado?: boolean }) => {
         marginTop: 2
     }
 
+    const { user, logout } = useAuth();
+
     const opcionesMenu: MenuProps["items"] = [
         {
             key: 'cerrar-sesion',
             label: 'Cerrar sesión',
             icon: <LogoutOutlined />,
             onClick: () => {
-                navigate("/login");
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
-
+                logout(); // limpia el user del contexto
+                navigate("/login"); // luego navega
             }
         }
     ]
 
-    const { user } = useAuth(); 
+
 
     return (
         <div style={contenedorStyle}>
