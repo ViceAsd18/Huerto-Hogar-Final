@@ -6,7 +6,7 @@ export function meta() {
 }
 
 export default function MisOrdenesRoute() {
-    return <PrivateRoute rol="cliente">
+    return <PrivateRoute rol={['cliente','admin']}>
         <MisOrdenesPage />;
     </PrivateRoute>
 }

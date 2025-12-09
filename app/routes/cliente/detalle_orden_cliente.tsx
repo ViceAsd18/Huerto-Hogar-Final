@@ -7,7 +7,7 @@ export function meta() {
 
 export default function DetalleOrdenClienteRoute() {
     return (
-        <PrivateRoute rol="cliente">
+        <PrivateRoute rol={['cliente','admin']}>
             <DetalleOrdenClientePage />;
         </PrivateRoute>
     )

@@ -3,7 +3,7 @@ import CarritoClientePage from "componentes/paginas/Cliente/CarritoClientePage"
 
 const carrito = () => {
     return (
-        <PrivateRoute rol="cliente">
+        <PrivateRoute rol={['cliente','admin']}>
             <CarritoClientePage/>
         </PrivateRoute>
     )
