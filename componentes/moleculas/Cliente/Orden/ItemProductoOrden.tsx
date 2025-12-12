@@ -1,4 +1,4 @@
-import ImagenProducto from "../../atomos/Imagen";
+import Imagen from "componentes/atomos/Imagen";
 
 interface Props {
     imagen: string;
@@ -21,7 +21,7 @@ const ItemProductoOrden = ({ imagen, nombre }: Props) => {
     return (
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
             <div style={contenedorStyle}>
-                <ImagenProducto
+                <Imagen
                     src={imagen}
                     alt={nombre}
                     width="100%"

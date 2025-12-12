@@ -41,7 +41,31 @@ vi.mock('antd', () => {
 
 	const List = ({ children }: any) => React.createElement('div', {}, children);
 
+	const Table = ({ dataSource, columns, ...rest }: any) => 
+		React.createElement('table', { 'data-testid': 'ant-table', ...rest }, 
+			React.createElement('thead', {}, 
+				React.createElement('tr', {}, 
+					columns?.map((col: any) => React.createElement('th', { key: col.key }, col.title))
+				)
+			),
+			React.createElement('tbody', {},
+				dataSource?.map((row: any) => 
+					React.createElement('tr', { key: row.id_usuario || Math.random() },
+						columns?.map((col: any) => 
+							React.createElement('td', { key: col.key }, 
+								col.render ? col.render(null, row) : row[col.dataIndex]
+							)
+						)
+					)
+				)
+			)
+		);
+
 	const Card = ({ children }: any) => React.createElement('div', { 'data-testid': 'ant-card' }, children);
+
+	const Avatar = ({ children, size, style }: any) => React.createElement('div', { 'data-testid': 'ant-avatar', 'data-size': size, style }, children);
+
+	const Dropdown = ({ children, menu, placement }: any) => React.createElement('div', { 'data-testid': 'ant-dropdown', 'data-placement': placement }, children);
 
 	const Row = ({ children, align, gutter }: any) => React.createElement('div', { 'data-testid': 'ant-row', 'data-align': align, 'data-gutter': JSON.stringify(gutter) }, children);
 
@@ -135,7 +159,10 @@ vi.mock('antd', () => {
 		Spin,
 		Space,
 		List,
+		Table,
 		Card,
+		Avatar,
+		Dropdown,
 		Row,
 		Col,
 		Layout,
