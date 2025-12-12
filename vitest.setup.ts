@@ -27,6 +27,10 @@ vi.mock('antd', () => {
 
 	const Typography = {
 		Text: (props: any) => React.createElement('span', props, props.children),
+		Title: ({ level = 1, ...props }: any) => {
+			const tag = `h${level}`;
+			return React.createElement(tag, props, props.children);
+		},
 	};
 
 	const Tag = ({ children, color, ...rest }: any) => React.createElement('span', { 'data-testid': 'ant-tag', 'data-color': color, ...rest }, children);
@@ -119,6 +123,8 @@ vi.mock('antd', () => {
 
 	const Image = ({ src, alt, width, height, style }: any) => React.createElement('img', { src, alt, width, height, style });
 
+	const Tooltip = ({ children, title }: any) => React.createElement('div', { title }, children);
+
 	// message will be mocked on-demand in tests; provide safe no-op defaults
 	const message = { loading: vi.fn(() => vi.fn()), success: vi.fn(), error: vi.fn() };
 
@@ -141,6 +147,7 @@ vi.mock('antd', () => {
 		InputNumber,
 		Select,
 		Image,
+		Tooltip,
 		message,
 	};
 });
