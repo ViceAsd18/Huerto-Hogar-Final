@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 interface Props {
     children: ReactNode;
-    rol?: string | string[]; // 👈 acepta string O array
+    rol?: string | string[];
 }
 
 export const PrivateRoute = ({ children, rol }: Props) => {

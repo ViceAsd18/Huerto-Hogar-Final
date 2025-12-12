@@ -2,27 +2,38 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import VendedorLayout from "componentes/layout/VendedorLayout";
 import Titulo from "componentes/atomos/Titulo";
-import FormularioProducto from "componentes/organismo/Vendedor/FormularioProducto";
+import FormularioProducto from "componentes/organismo/Vendedor/Productos/FormularioProducto";
 import { getProductoById, editarProducto } from "services/productos";
-import { message } from "antd";
+import { message, Spin } from "antd";
 
 const EditarProductoPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+
     const [producto, setProducto] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
+    const [loadingData, setLoadingData] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
-        const p = await getProductoById(Number(id));
-        setProducto({
-            nombre_producto: p.nombre_producto,
-            descripcion_producto: p.descripcion_producto,
-            precio: p.precio,
-            stock: p.stock,
-            categoria: {
-                id_categoria: p.categoria.id_categoria
+            try {
+                setLoadingData(true);
+                const p = await getProductoById(Number(id));
+                setProducto({
+                    nombre_producto: p.nombre_producto,
+                    descripcion_producto: p.descripcion_producto,
+                    precio: p.precio,
+                    stock: p.stock,
+                    categoria: {
+                        id_categoria: p.categoria.id_categoria
+                    }
+                });
+            } catch (error) {
+                console.error("Error cargando producto:", error);
+                message.error("No se pudo cargar el producto");
+            } finally {
+                setLoadingData(false);
             }
-        });
         };
         fetchData();
     }, [id]);
@@ -36,30 +47,37 @@ const EditarProductoPage = () => {
             categoriaId: values.categoria
         };
 
-        console.log("Payload para editar producto:", payload);
-
         try {
+            setLoading(true);
             await editarProducto(Number(id), payload);
             message.success("Producto actualizado correctamente");
             navigate("/productos");
-        } catch (err) {
+        } catch (err: any) {
             console.error("Error al editar producto:", err);
-            message.error("Error al editar el producto");
+            message.error(err?.response?.data?.mensaje || "Error al editar el producto");
+        } finally {
+            setLoading(false);
         }
     };
 
-
     return (
         <VendedorLayout>
-        <Titulo>Editar Producto</Titulo>
+            <Titulo>Editar Producto</Titulo>
 
-        {producto && (
-            <FormularioProducto
-            modo="editar"
-            productoInicial={producto}
-            onSubmit={handleSubmit}
-            />
-        )}
+            {loadingData ? (
+                <div style={{ textAlign: "center", marginTop: 50 }}>
+                    <Spin size="large" />
+                </div>
+            ) : producto ? (
+                <FormularioProducto
+                    modo="editar"
+                    productoInicial={producto}
+                    onSubmit={handleSubmit}
+                    loading={loading}
+                />
+            ) : (
+                <p>Producto no encontrado</p>
+            )}
         </VendedorLayout>
     );
 };

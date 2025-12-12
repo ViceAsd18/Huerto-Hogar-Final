@@ -1,6 +1,6 @@
 import { Row, Col } from "antd";
 import VendedorLayout from "componentes/layout/VendedorLayout";
-import DashboardPanel from "componentes/organismo/Vendedor/DashboardPanel";
+import DashboardPanel from "componentes/organismo/Vendedor/Dashboard/DashboardPanel";
 
 const DashboardPage = () => {
     return (

@@ -1,6 +1,6 @@
 import { PublicRoute } from "auth/PublicRoute";
-import DetalleProductoClientePage from "componentes/paginas/Cliente/DetalleProductoClientePage";
-
+import DetalleProductoClientePage from "componentes/paginas/Cliente/Productos/DetalleProductoClientePage";
+    
 export function meta() {
     return [
         { title: "Detalle del Producto | SalesSystem" },

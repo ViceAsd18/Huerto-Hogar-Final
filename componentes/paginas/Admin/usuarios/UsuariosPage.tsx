@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import VendedorLayout from "componentes/layout/VendedorLayout";
 import { getUsuarios, type User } from "services/usuario";
 import { Spin } from "antd";
-import UsuariosTable from "componentes/atomos/UsuariosTable";
+import UsuariosTable from "componentes/moleculas/Admin/UsuariosTable";
 import Titulo from "componentes/atomos/Titulo";
-import ControlsTabla from "componentes/moleculas/Vendedor/ControlsTabla";
+import ControlsTabla from "componentes/organismo/Vendedor/Controls/ControlsTabla";
 import { useNavigate } from "react-router";
 
 const UsuariosPage = () => {

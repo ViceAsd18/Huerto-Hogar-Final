@@ -1,7 +1,7 @@
 import VendedorLayout from "componentes/layout/VendedorLayout";
-import InfoProducto from "componentes/organismo/Vendedor/InfoProducto";
-import HistorialVentas from "componentes/organismo/Vendedor/HistorialVentas";
-import type { Venta } from "componentes/organismo/Vendedor/HistorialVentas";
+import InfoProducto from "componentes/organismo/Vendedor/Productos/InfoProducto";
+import HistorialVentas from "componentes/organismo/Vendedor/Productos/HistorialVentas";
+import type { Venta } from "componentes/organismo/Vendedor/Productos/HistorialVentas";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getProductoById } from "services/productos";

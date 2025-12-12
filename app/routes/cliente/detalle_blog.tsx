@@ -1,5 +1,5 @@
 import { PublicRoute } from "auth/PublicRoute";
-import DetalleBlogPage from "componentes/paginas/Cliente/DetalleBlogPage"
+import DetalleBlogPage from "componentes/paginas/Cliente/Blogs/DetalleBlogPage";
 
 const detalle_blog = () => {
     return (

@@ -1,4 +1,4 @@
-import { api } from "auth/api";
+import { api } from "services/api";
 import type { User } from "services/usuario";
 
 export interface AuthResponse {

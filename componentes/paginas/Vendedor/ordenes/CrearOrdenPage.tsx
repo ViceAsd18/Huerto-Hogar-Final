@@ -3,13 +3,12 @@ import { getClientes } from "services/usuario";
 import type { User } from "services/usuario";
 import VendedorLayout from "componentes/layout/VendedorLayout";
 import Titulo from "componentes/atomos/Titulo";
-import CrearOrden from "componentes/organismo/Vendedor/CrearOrden";
+import CrearOrden from "componentes/organismo/Vendedor/Ordenes/CrearOrden";
 import { getProductoById, getProductos, type Producto } from "services/productos";
-import { crearOrden } from "services/orden";
-import { message } from "antd";
+import { crearOrden, registrarPagoOrden } from "services/orden";
+import { message, Spin, Alert, Button } from "antd";
 import { useNavigate } from "react-router";
-import ModalPago from "componentes/moleculas/Vendedor/ModalPago";
-import { registrarPagoOrden } from "services/orden";
+import ModalPago from "componentes/organismo/Vendedor/Modal/ModalPago";
 
 const CrearOrdenPage = () => {
     const [clientes, setClientes] = useState<User[]>([]);
@@ -17,41 +16,42 @@ const CrearOrdenPage = () => {
     const [ordenParaPagar, setOrdenParaPagar] = useState<any | null>(null);
     const [modalPagoVisible, setModalPagoVisible] = useState(false);
 
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
     const navigate = useNavigate();
 
-    // Cargar clientes
+    const cargarDatos = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+
+            const [clientesData, productosData] = await Promise.all([
+                getClientes(),
+                getProductos()
+            ]);
+
+            setClientes(clientesData);
+            setProductos(productosData);
+        } catch (err) {
+            console.error(err);
+            setError("Error al cargar clientes y productos. Intenta recargar.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchClientes = async () => {
-            try {
-                const data = await getClientes();
-                setClientes(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchClientes();
+        cargarDatos();
     }, []);
 
-    // Cargar productos
-    useEffect(() => {
-        const fetchProductos = async () => {
-            try {
-                const data = await getProductos();
-                setProductos(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchProductos();
-    }, []);
-
-    // Generar orden en pendiente sin abrir modal
     const handleGenerarOrden = async (clienteId: number, productosSeleccionados: any[]) => {
         const detalles = productosSeleccionados.map(p => ({
             productoId: p.id_producto,
             cantidad: p.cantidad,
             subtotal: p.cantidad * p.precio
         }));
+
         const total = Math.round(detalles.reduce((sum, d) => sum + d.subtotal, 0) * 1.19);
 
         try {
@@ -63,6 +63,7 @@ const CrearOrdenPage = () => {
                 metodo_pago: "efectivo",
                 detalles
             });
+
             message.success("Orden creada exitosamente");
             navigate("/ordenes");
         } catch {
@@ -70,10 +71,8 @@ const CrearOrdenPage = () => {
         }
     };
 
-    // Generar orden y abrir modal de pago
     const handlePagarOrden = async (clienteId: number, productosSeleccionados: any[]) => {
         try {
-            //Crear la orden pendiente primero
             const total = Math.round(
                 productosSeleccionados.reduce((sum, p) => sum + p.cantidad * p.precio, 0) * 1.19
             );
@@ -91,20 +90,18 @@ const CrearOrdenPage = () => {
                 })),
             });
 
-            //Obtener los detalles completos con stock real desde backend
             const detallesCompletos = await Promise.all(
                 productosSeleccionados.map(async p => {
                     const productoBackend = await getProductoById(p.id_producto);
                     return {
-                        id_detalle: 0, // temporal, no importa aquí
+                        id_detalle: 0,
                         cantidad: p.cantidad,
                         subtotal: p.cantidad * p.precio,
-                        producto: productoBackend, // incluye stock correcto
+                        producto: productoBackend,
                     };
                 })
             );
 
-            //Guardar la orden completa para el modal de pago
             setOrdenParaPagar({
                 ...nuevaOrden,
                 detalles: detallesCompletos,
@@ -114,12 +111,11 @@ const CrearOrdenPage = () => {
 
             setModalPagoVisible(true);
         } catch (error) {
-            console.error("Error al crear la orden para pagar:", error);
+            console.error(error);
             message.error("Error al crear la orden");
         }
     };
 
-    //Registrar pago usando función reutilizable
     const handleRegistrarPagoModal = async () => {
         if (!ordenParaPagar) return;
 
@@ -137,22 +133,45 @@ const CrearOrdenPage = () => {
         <VendedorLayout>
             <Titulo>Crear Nueva Orden</Titulo>
 
-            <CrearOrden
-                productosDisponibles={productos}
-                clientes={clientes}
-                onGenerarOrden={handleGenerarOrden}
-                onPagarOrden={handlePagarOrden} 
-            />
-
-            {ordenParaPagar && (
-                <ModalPago
-                    visible={modalPagoVisible}
-                    onClose={() => setModalPagoVisible(false)}
-                    total={ordenParaPagar.total}
-                    cliente={ordenParaPagar.clienteNombre}
-                    ordenId={ordenParaPagar.id_venta}
-                    onRegistrarPago={handleRegistrarPagoModal}
+            {error && (
+                <Alert
+                    type="error"
+                    message="Error al cargar datos"
+                    description={error}
+                    showIcon
+                    style={{ marginBottom: 20 }}
+                    action={
+                        <Button onClick={cargarDatos} size="small">
+                            Reintentar
+                        </Button>
+                    }
                 />
+            )}
+
+            {loading ? (
+                <div style={{ textAlign: "center", padding: 50 }}>
+                    <Spin size="large" />
+                </div>
+            ) : (
+                <>
+                    <CrearOrden
+                        productosDisponibles={productos}
+                        clientes={clientes}
+                        onGenerarOrden={handleGenerarOrden}
+                        onPagarOrden={handlePagarOrden}
+                    />
+
+                    {ordenParaPagar && (
+                        <ModalPago
+                            visible={modalPagoVisible}
+                            onClose={() => setModalPagoVisible(false)}
+                            total={ordenParaPagar.total}
+                            cliente={ordenParaPagar.clienteNombre}
+                            ordenId={ordenParaPagar.id_venta}
+                            onRegistrarPago={handleRegistrarPagoModal}
+                        />
+                    )}
+                </>
             )}
         </VendedorLayout>
     );

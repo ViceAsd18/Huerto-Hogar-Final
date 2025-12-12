@@ -1,4 +1,4 @@
-import { api } from "auth/api";
+import { api } from "services/api";
 
 export interface User {
     id_usuario: number;

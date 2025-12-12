@@ -1,5 +1,5 @@
 import { PublicRoute } from "auth/PublicRoute";
-import TiendaPage from "../../../componentes/paginas/Cliente/TiendaPage";
+import TiendaPage from "../../../componentes/paginas/Cliente/Productos/TiendaPage";
 
 export function meta() {
     return [{ title: "Catálogo | SalesSystem" }];

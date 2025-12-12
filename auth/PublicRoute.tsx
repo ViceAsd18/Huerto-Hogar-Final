@@ -22,7 +22,7 @@ export const PublicRoute = ({ children, bloquear = [] }: Props) => {
         message.error("No puedes acceder a esta sección");
     }
 
-    if (estaBloqueado) {
+    if (estaBloqueado) {    
         return <Navigate to="/dashboard" replace />;
     }
 

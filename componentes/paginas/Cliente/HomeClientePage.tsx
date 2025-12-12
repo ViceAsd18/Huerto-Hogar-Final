@@ -2,7 +2,7 @@ import ClienteLayout from "../../layout/ClienteLayout";
 import { Typography, Button, Spin, message } from "antd";
 import { useState, useEffect } from "react";
 import type { Producto } from "../../../services/productos";
-import CardProductoCliente from "../../moleculas/Cliente/CardProductoCliente";
+import CardProductoCliente from "componentes/moleculas/Cliente/Tienda/CardProductoCliente";
 import { useNavigate } from "react-router";
 import { getProductos } from "../../../services/productos";
 import Titulo from "componentes/atomos/Titulo";

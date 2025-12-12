@@ -19,4 +19,4 @@ const InfoProducto = ({producto} : Props) => {
     )
 }
 
-export default InfoProducto
+export default InfoProducto 

@@ -1,0 +1,62 @@
+import React from "react";
+import type { Producto } from "services/productos";
+import ImagenProducto from "componentes/atomos/Imagen";
+import CardInfoProducto from "componentes/moleculas/Vendedor/Productos/CardInfoProducto";
+
+interface InfoProductoProps {
+    producto: Producto;
+}
+
+const contenedorStyle: React.CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '40px',
+    padding: '24px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    justifyContent: 'center',
+    alignItems: 'flex-start'
+};
+
+const contenedorImagenStyle: React.CSSProperties = {
+    flex: '1 1 400px',
+    width: '100%',
+    minWidth : '210px',
+    maxWidth: '500px',
+    height: 'auto',
+    background: '#ffffff',
+    borderRadius: '16px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+    padding: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+};
+
+const contenedorInfoStyle: React.CSSProperties = {
+    flex: '1 1 350px',
+    maxWidth: '500px'
+};
+
+const InfoProducto = ({ producto }: InfoProductoProps) => {
+
+    const nombreImagen = producto.nombre_producto?.toLowerCase().replace(/\s+/g, "_")
+    
+    return (
+        <div style={contenedorStyle}>
+            <div style={contenedorImagenStyle}>
+                <ImagenProducto src={`/assets/img/productos/${nombreImagen}.jpg`} alt={producto.nombre_producto}
+                    height="100%" width="100%" style={{
+                        objectFit : 'contain'
+                    }}
+
+                />
+            </div>
+            <div style={contenedorInfoStyle}>
+                <CardInfoProducto producto={producto} />
+            </div>
+        </div>
+    );
+};
+
+export default InfoProducto;

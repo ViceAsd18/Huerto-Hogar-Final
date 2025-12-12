@@ -1,5 +1,5 @@
-import { api } from "auth/api";
-import type { Venta } from "componentes/organismo/Vendedor/HistorialVentas";
+import { api } from "services/api";
+import type { Venta } from "componentes/organismo/Vendedor/Productos/HistorialVentas";
 import { actualizarStockProducto, getProductoById, getProductos } from "./productos";
 import type { Producto} from 'services/productos'
 

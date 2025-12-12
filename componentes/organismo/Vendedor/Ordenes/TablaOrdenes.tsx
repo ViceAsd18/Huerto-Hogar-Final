@@ -1,0 +1,120 @@
+import { Table, Button, Space } from "antd";
+import type { Dispatch, SetStateAction } from "react";
+import type { Orden } from "services/orden";
+import ControlsTabla from "componentes/organismo/Vendedor/Controls/ControlsTabla";
+import PrecioProducto from "componentes/atomos/PrecioProducto";
+import BadgeEstado from "componentes/atomos/BadgeEstado";
+import Boton from "componentes/atomos/Boton";
+import Fecha from "componentes/atomos/Fecha";
+
+interface Props {
+    ordenes: Orden[];
+    busqueda: string;
+    onBusquedaChange: Dispatch<SetStateAction<string>>;
+    estadoFiltro?: string;
+    onEstadoChange?: (estado: string) => void;
+    onVerDetalle: (orden: Orden) => void;
+    onPagarOrden: (orden: Orden) => void;
+    onNuevaOrden: () => void;
+    onCancelarOrden: (orden: Orden) => void;
+    loadingCancelar: boolean;
+}
+
+const TablaOrdenes = ({
+    ordenes,
+    busqueda, onBusquedaChange,
+    estadoFiltro, onEstadoChange,
+    onVerDetalle, onPagarOrden, onNuevaOrden, onCancelarOrden,
+    loadingCancelar
+}: Props) => {
+    
+    const columnas = [
+        { title: "ID Orden", dataIndex: "id_venta", key: "id_venta", width: "10%" },
+        { title: "Cliente", dataIndex: ["usuario","nombre"], key: "cliente", width: "25%" },
+
+        { 
+            title: "Fecha", 
+            dataIndex: "fecha_venta", 
+            key: "fecha_venta", 
+            width: "15%", 
+            render : (fecha: string) => <Fecha fecha={fecha} variante="corto" /> 
+        },
+        
+        {
+            title: "Monto Total",
+            dataIndex: "total",
+            key: "total",
+            width: "15%",
+            render: (total: number) => <PrecioProducto valor={total} tipo="normal" />,
+        },
+        {
+            title: "Estado",
+            dataIndex: "estado",
+            key: "estado",
+            width: "10%",
+            render: (estado: string) => (
+                <BadgeEstado estado={estado as 'pendiente' | 'completada' | 'cancelada'} />
+            ),
+        },
+        {
+            title: "Acciones",
+            key: "acciones",
+            width: "25%",
+            render: (_: any, orden: Orden) => (
+                <Space>
+                    <Button type="link" onClick={() => onVerDetalle(orden)}>
+                        Ver detalle
+                    </Button>
+
+                    {orden.estado === "pendiente" && (
+                        <>
+                            <Boton onClick={() => onPagarOrden(orden)} color="green">
+                                Pagar
+                            </Boton>
+
+                            <Button 
+                                type="primary"
+                                danger
+                                onClick={() => onCancelarOrden(orden)}
+                                loading={loadingCancelar}
+                            >
+                                Cancelar
+                            </Button>
+                        </>
+                    )}
+                </Space>
+            ),
+        },
+    ];
+
+    const ordenesFiltradas = ordenes.filter(
+        (o) =>
+            o.usuario.nombre.toLowerCase().includes(busqueda.toLowerCase()) &&
+            (!estadoFiltro || o.estado === estadoFiltro)
+    );
+
+    return (
+        <div>
+            <ControlsTabla
+                busqueda={busqueda}
+                onBusquedaChange={onBusquedaChange}
+                filtro={estadoFiltro}
+                onFiltroChange={onEstadoChange}
+                opcionesFiltro={["pendiente", "completada", "cancelada"]}
+                placeholderBusqueda="Buscar por cliente..."
+                textoBoton="Nueva Orden"
+                onBotonClick={onNuevaOrden}
+            />
+
+            <Table
+                columns={columnas}
+                dataSource={ordenesFiltradas}
+                rowKey="id_venta"
+                pagination={{ pageSize: 10, showSizeChanger : false }}
+                style={{ overflow: "auto" }}
+            />
+        </div>
+    );
+};
+
+export default TablaOrdenes;

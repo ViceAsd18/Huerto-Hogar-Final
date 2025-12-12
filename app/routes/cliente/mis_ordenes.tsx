@@ -1,5 +1,5 @@
 import { PrivateRoute } from "auth/PrivateRoute";
-import MisOrdenesPage from "componentes/paginas/Cliente/MisOrdenesPage";
+import MisOrdenesPage from "componentes/paginas/Cliente/Ordenes/MisOrdenesPage";
 
 export function meta() {
     return [{ title: "Mis Órdenes | SalesSystem" }];

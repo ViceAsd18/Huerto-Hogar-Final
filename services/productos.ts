@@ -1,4 +1,4 @@
-import { api } from "../auth/api";
+import { api } from "./api";
 
 // Interfaz Híbrida
 export interface Producto {
