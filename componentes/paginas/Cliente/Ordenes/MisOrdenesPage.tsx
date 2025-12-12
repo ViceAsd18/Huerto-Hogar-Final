@@ -1,11 +1,10 @@
 import ClienteLayout from "../../../layout/ClienteLayout";
 import ListaOrdenesCliente from "componentes/organismo/Cliente/Orden/ListaOrdenesCliente";
-import { Typography, Spin } from "antd";
+import { Typography, Spin, Empty } from "antd";
 import { useEffect, useState } from "react";
 import { getOrdenes, type Orden } from "services/orden";
 import { useAuth } from "auth/AuthContext";
 import Titulo from "componentes/atomos/Titulo";
-
 
 const { Text } = Typography;
 
@@ -14,7 +13,6 @@ const MisOrdenesPage = () => {
 
     const [ordenes, setOrdenes] = useState<Orden[]>([]);
     const [loading, setLoading] = useState(true);
-
 
     useEffect(() => {
         const fetchOrdenes = async () => {
@@ -43,8 +41,6 @@ const MisOrdenesPage = () => {
         fetchOrdenes();
     }, [user]);
 
-
-
     return (
         <ClienteLayout>
             <div style={{ padding: "20px 0", maxWidth: 1000, margin: "0 auto" }}>
@@ -55,6 +51,10 @@ const MisOrdenesPage = () => {
                 {loading ? (
                     <div style={{ textAlign: "center", padding: 50 }}>
                         <Spin size="large" />
+                    </div>
+                ) : ordenes.length === 0 ? (
+                    <div style={{ textAlign: "center", padding: 50 }}>
+                        <Empty description="No tienes órdenes todavía" />
                     </div>
                 ) : (
                     <ListaOrdenesCliente ordenes={ordenes} />

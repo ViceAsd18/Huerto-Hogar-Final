@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Typography, Input, Button, Spin, Empty, Space } from "antd";
+import { Typography, Input, Button, Spin, Empty, Space, message } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import ClienteLayout from "../../../layout/ClienteLayout";
 import CardProductoCliente from "componentes/moleculas/Cliente/Tienda/CardProductoCliente";
@@ -7,11 +7,12 @@ import { getProductos } from "../../../../services/productos";
 import type { Producto } from "../../../../services/productos";
 import Titulo from "componentes/atomos/Titulo";
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const TiendaPage = () => {
     const [productos, setProductos] = useState<Producto[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const [busqueda, setBusqueda] = useState("");
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todos");
@@ -22,20 +23,29 @@ const TiendaPage = () => {
 
     const cargarProductos = async () => {
         setLoading(true);
+        setError(false);
+
         try {
             const data = await getProductos();
-            if (Array.isArray(data)) setProductos(data);
-        } catch (error) {
-            console.error("Error al cargar productos");
+            if (Array.isArray(data)) {
+                setProductos(data);
+            } else {
+                setError(true);
+                message.error("Error al cargar productos");
+            }
+        } catch (err) {
+            console.error(err);
+            setError(true);
+            message.error("Error al cargar productos");
         } finally {
             setLoading(false);
         }
     };
 
-    const categoriasDisponibles = ["Todos", ...new Set(productos.map(p => (p.categoria as any).nombre_categoria || "General"))];
+    const categoriasDisponibles = ["Todos", ...new Set(productos.map(p => (p.categoria as any)?.nombre_categoria || "General"))];
 
     const productosFiltrados = productos.filter(producto => {
-        const nombreCat = (producto.categoria as any).nombre_categoria || "General";
+        const nombreCat = (producto.categoria as any)?.nombre_categoria || "General";
         const coincideBusqueda = producto.nombre_producto?.toLowerCase().includes(busqueda.toLowerCase());
         const coincideCategoria = categoriaSeleccionada === "Todos" || nombreCat === categoriaSeleccionada;
         return coincideBusqueda && coincideCategoria;
@@ -80,6 +90,10 @@ const TiendaPage = () => {
                     <div style={{ textAlign: "center", padding: 100 }}>
                         <Spin size="large" />
                     </div>
+                ) : error ? (
+                    <Empty description="No se pudieron cargar los productos">
+                        <Button type="primary" onClick={cargarProductos}>Reintentar</Button>
+                    </Empty>
                 ) : productosFiltrados.length > 0 ? (
                     <div style={{
                         display: "grid",

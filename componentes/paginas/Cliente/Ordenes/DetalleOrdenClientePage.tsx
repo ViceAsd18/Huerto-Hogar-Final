@@ -1,4 +1,3 @@
-// componentes/pages/Cliente/DetalleOrdenClientePage.tsx
 import { useParams, useNavigate } from "react-router";
 import { Card, Divider, Spin, Button } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
