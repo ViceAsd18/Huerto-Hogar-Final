@@ -33,7 +33,7 @@ const ClienteLayout = ({ children }: { children: React.ReactNode }) => {
             </Content>
 
             <Footer style={{ textAlign: 'center', background: '#fafafa' }}>
-                © 2025 SalesSystem. Todos los derechos reservados.
+                © 2025 HuertoHogar. Todos los derechos reservados.
             </Footer>   
         </Layout>
     )

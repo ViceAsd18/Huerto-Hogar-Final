@@ -11,12 +11,11 @@ interface Props {
     cliente: string;
     total: number;
     onRegistrarPago: (monto: number) => void;
-    confirmLoading?: boolean; // ← AGREGADO, no rompe nada
+    confirmLoading?: boolean;
 }
 
 const ModalPago = ({ visible, onClose, ordenId, cliente, total, onRegistrarPago, confirmLoading }: Props) => {
     const [form] = Form.useForm();
-    const navigate = useNavigate();
 
     const handleOk = () => {
         form.validateFields().then(values => {
