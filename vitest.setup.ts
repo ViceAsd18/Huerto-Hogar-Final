@@ -35,7 +35,7 @@ vi.mock('antd', () => {
 
 	const Tag = ({ children, color, ...rest }: any) => React.createElement('span', { 'data-testid': 'ant-tag', 'data-color': color, ...rest }, children);
 
-	const Spin = ({ children }: any) => React.createElement('div', {}, children);
+	const Spin = ({ children, size }: any) => React.createElement('div', { className: 'ant-spin', 'data-size': size }, children);
 
 	const Space = ({ children }: any) => React.createElement('div', {}, children);
 
@@ -66,6 +66,7 @@ vi.mock('antd', () => {
 	const Avatar = ({ children, size, style }: any) => React.createElement('div', { 'data-testid': 'ant-avatar', 'data-size': size, style }, children);
 
 	const Dropdown = ({ children, menu, placement }: any) => React.createElement('div', { 'data-testid': 'ant-dropdown', 'data-placement': placement }, children);
+	const Divider = () => React.createElement('hr', { 'data-testid': 'ant-divider' });
 
 	const Row = ({ children, align, gutter }: any) => React.createElement('div', { 'data-testid': 'ant-row', 'data-align': align, 'data-gutter': JSON.stringify(gutter) }, children);
 
@@ -149,6 +150,12 @@ vi.mock('antd', () => {
 
 	const Tooltip = ({ children, title }: any) => React.createElement('div', { title }, children);
 
+	const Drawer = ({ children, title, open, onClose }: any) => 
+		open ? React.createElement('div', { 'data-testid': 'ant-drawer' }, 
+			React.createElement('div', {}, title),
+			children
+		) : null;
+
 	// message will be mocked on-demand in tests; provide safe no-op defaults
 	const message = { loading: vi.fn(() => vi.fn()), success: vi.fn(), error: vi.fn() };
 
@@ -163,6 +170,7 @@ vi.mock('antd', () => {
 		Card,
 		Avatar,
 		Dropdown,
+		Divider,
 		Row,
 		Col,
 		Layout,
@@ -175,6 +183,7 @@ vi.mock('antd', () => {
 		Select,
 		Image,
 		Tooltip,
+		Drawer,
 		message,
 	};
 });
